@@ -47,7 +47,7 @@ public class ChatConversation implements Serializable {
 	private Double presencePenalty;
 	
 	@JsonbProperty("response_format")
-	private ChatResponseFormat responseFormat;
+	private ChatCompletionResponseFormat responseFormat;
 	
 	@JsonbProperty
 	private Integer seed;
@@ -184,14 +184,14 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the responseFormat
 	 */
-	public ChatResponseFormat getResponseFormat() {
+	public ChatCompletionResponseFormat getResponseFormat() {
 		return responseFormat;
 	}
 
 	/**
 	 * @param responseFormat the responseFormat to set
 	 */
-	public void setResponseFormat(ChatResponseFormat responseFormat) {
+	public void setResponseFormat(ChatCompletionResponseFormat responseFormat) {
 		this.responseFormat = responseFormat;
 	}
 
