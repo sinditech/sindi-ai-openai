@@ -11,7 +11,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 /**
  * @author Buhake Sindi
  * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/api-reference/moderations">OpenAPI API reference documentation.</a>
+ * @see <a href="https://platform.openai.com/docs/api-reference/moderations">OpenAI API reference documentation.</a>
  */
 public abstract class ModerationInput<T extends Serializable> implements Serializable {
 	

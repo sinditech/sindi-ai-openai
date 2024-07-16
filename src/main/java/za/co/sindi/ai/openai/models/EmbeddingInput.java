@@ -11,7 +11,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 /**
  * @author Buhake Sindi
  * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/api-reference/audio">OpenAPI API reference documentation.</a>
+ * @see <a href="https://platform.openai.com/docs/api-reference/audio">OpenAI API reference documentation.</a>
  */
 public abstract class EmbeddingInput<T extends Serializable> implements Serializable {
 	

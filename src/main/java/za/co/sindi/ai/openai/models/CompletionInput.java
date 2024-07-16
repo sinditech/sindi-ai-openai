@@ -14,7 +14,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
  * 
  * @author Buhake Sindi
  * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/api-reference/completions">OpenAPI API reference documentation.</a>
+ * @see <a href="https://platform.openai.com/docs/api-reference/completions">OpenAI API reference documentation.</a>
  */
 public abstract class CompletionInput<T extends Serializable> implements Serializable {
 
