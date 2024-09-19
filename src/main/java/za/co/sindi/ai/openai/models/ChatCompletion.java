@@ -29,6 +29,9 @@ public class ChatCompletion implements Serializable {
 	@JsonbProperty
 	private String model;
 	
+	@JsonbProperty("service_tier")
+	private String serviceTier;
+	
 	@JsonbProperty("system_fingerprint")
 	private String systemFingerprint;
 	

@@ -37,8 +37,12 @@ public class ChatConversation implements Serializable {
 	@JsonbProperty("top_logprobs")
 	private Integer topLogProbabilites;
 	
+	@Deprecated
 	@JsonbProperty("max_tokens")
 	private Integer maxTokens;
+	
+	@JsonbProperty("max_completion_tokens")
+	private Integer maxCompletionTokens;
 	
 	@JsonbProperty
 	private Integer n;
@@ -52,11 +56,17 @@ public class ChatConversation implements Serializable {
 	@JsonbProperty
 	private Integer seed;
 	
+	@JsonbProperty("service_tier")
+	private ServiceTier serviceTier;
+	
 	@JsonbProperty
 	private String[] stop;
 	
 	@JsonbProperty
 	private Boolean stream;
+	
+	@JsonbProperty("stream_options")
+	private StreamOptions streamOptions;
 	
 	@JsonbProperty
 	private Double temperature;
@@ -69,6 +79,9 @@ public class ChatConversation implements Serializable {
 	
 	@JsonbProperty("tool_choice")
 	private Object toolChoice;
+	
+	@JsonbProperty("parallel_tool_calls")
+	private Boolean parallelToolCalls;
 	
 	@JsonbProperty
 	private String user;

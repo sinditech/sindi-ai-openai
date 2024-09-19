@@ -30,7 +30,8 @@ public class JSONObjectTransformer implements ObjectTransformer {
 							new JsonbModerationModelNameAdapter(),
 							new JsonbDALLEModelFormatAdapter(),
 							new JsonbGPTModelFormatAdapter(),
-							new JsonbImageDetailAdapter());
+							new JsonbImageDetailAdapter(),
+							new JsonbServiceTierAdapter());
 		return config;
 	}
 

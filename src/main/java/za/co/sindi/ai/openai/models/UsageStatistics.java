@@ -22,26 +22,9 @@ public class UsageStatistics implements Serializable {
 	
 	@JsonbProperty("total_tokens")
 	private Integer totalTokens;
-
-	/**
-	 * 
-	 */
-	public UsageStatistics() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @param completionTokens
-	 * @param promptTokens
-	 * @param totalTokens
-	 */
-	public UsageStatistics(Integer completionTokens, Integer promptTokens, Integer totalTokens) {
-		super();
-		this.completionTokens = completionTokens;
-		this.promptTokens = promptTokens;
-		this.totalTokens = totalTokens;
-	}
+	
+	@JsonbProperty("completion_tokens_details")
+	private CompletionTokensDetails completionTokensDetails;
 
 	/**
 	 * @return the completionTokens
