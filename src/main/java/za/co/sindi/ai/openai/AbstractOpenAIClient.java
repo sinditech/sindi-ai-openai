@@ -23,6 +23,8 @@ import java.util.stream.Stream;
 import za.co.sindi.ai.openai.exception.OpenAIException;
 import za.co.sindi.ai.openai.models.OpenAIError;
 import za.co.sindi.commons.net.http.WithErrorBodyHandler;
+import za.co.sindi.commons.net.sse.Event;
+import za.co.sindi.commons.net.sse.MessageEvent;
 import za.co.sindi.commons.util.Either;
 import za.co.sindi.commons.utils.Strings;
 
@@ -108,15 +110,12 @@ public abstract class AbstractOpenAIClient implements OpenAIClient {
 		return either.getLeft();
 	}
 	
-	protected <R> Stream<R> handleStream(final Stream<String> lines, final ObjectTransformer objectTransformer, Class<R> entityClassType) {
-		final String keyword = "data: ";
+	protected <R> Stream<R> handleStream(final Stream<Event> events, final ObjectTransformer objectTransformer, Class<R> entityClassType) {
 		List<R> result = new ArrayList<>();
-		lines.forEach(line -> {
-			if (line.startsWith(keyword)) {
-				String content = line.substring(keyword.length());
-				if (content != null && !"[DONE]".equals(content)) {
-					result.add(objectTransformer.transform(content, entityClassType));
-				}
+		events.forEach(event -> {
+			if (event instanceof MessageEvent message) {
+				String content = message.getData();
+				result.add(objectTransformer.transform(content, entityClassType));
 			}
 		});
 		

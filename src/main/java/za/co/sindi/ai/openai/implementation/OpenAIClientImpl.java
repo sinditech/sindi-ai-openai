@@ -55,6 +55,8 @@ import za.co.sindi.ai.openai.models.Model;
 import za.co.sindi.ai.openai.models.ModelList;
 import za.co.sindi.ai.openai.models.Moderation;
 import za.co.sindi.ai.openai.moderations.CreateModerationRequest;
+import za.co.sindi.commons.net.sse.AllEventSubscriber;
+import za.co.sindi.commons.net.sse.SSEEventProcessor;
 import za.co.sindi.commons.util.Either;
 
 /**
@@ -161,8 +163,13 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		if (request.getConversation().getStream() == null || !Boolean.TRUE.equals(request.getConversation().getStream())) {
 			request.getConversation().setStream(true);
 		}
-		HttpResponse<Either<Stream<String>, String>> httpResponse = send(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getConversation()))), BodyHandlers.ofLines());
-		return handleStream(validateAndHandleHttpResponse(httpResponse, transformer), transformer, ChatCompletionChunk.class);
+		
+		SSEEventProcessor processor = new SSEEventProcessor();
+		AllEventSubscriber subscriber = new AllEventSubscriber();
+		processor.subscribe(subscriber);
+		HttpResponse<Either<Void, String>> httpResponse = send(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getConversation()))), BodyHandlers.fromLineSubscriber(processor));
+		validateAndHandleHttpResponse(httpResponse, transformer);
+		return handleStream(subscriber.getEventStream(), transformer, ChatCompletionChunk.class);
 	}
 
 	@Override
@@ -171,8 +178,14 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		if (request.getConversation().getStream() == null || !Boolean.TRUE.equals(request.getConversation().getStream())) {
 			request.getConversation().setStream(true);
 		}
-		CompletableFuture<HttpResponse<Either<Stream<String>, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getConversation()))), BodyHandlers.ofLines());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> handleStream(validateAndHandleHttpResponse(httpResponse, transformer), transformer, ChatCompletionChunk.class)).toCompletableFuture();
+		SSEEventProcessor processor = new SSEEventProcessor();
+		AllEventSubscriber subscriber = new AllEventSubscriber();
+		processor.subscribe(subscriber);
+		CompletableFuture<HttpResponse<Either<Void, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getConversation()))), BodyHandlers.fromLineSubscriber(processor));
+		return httpResponseFuture.thenApplyAsync(httpResponse -> { 
+			validateAndHandleHttpResponse(httpResponse, transformer);
+			return handleStream(subscriber.getEventStream(), transformer, ChatCompletionChunk.class); 
+		}).toCompletableFuture();
 	}
 
 	@Override
