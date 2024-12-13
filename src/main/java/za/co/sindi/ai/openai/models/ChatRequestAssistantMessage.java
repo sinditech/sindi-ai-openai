@@ -3,6 +3,8 @@
  */
 package za.co.sindi.ai.openai.models;
 
+import java.io.Serializable;
+
 import jakarta.json.bind.annotation.JsonbProperty;
 
 /**
@@ -10,10 +12,23 @@ import jakarta.json.bind.annotation.JsonbProperty;
  * @since 23 January 2024
  * @see <a href="https://platform.openai.com/docs/api-reference/chat/object">OpenAI API reference documentation.</a>
  */
-public class ChatRequestAssistantMessage extends ChatRequestMessage<String> {
+public abstract class ChatRequestAssistantMessage<T extends Serializable> extends ChatRequestMessage<T> {
 
 	@JsonbProperty
-	private String content;
+	private String refusal;
+	
+	@JsonbProperty
+	private String name;
+	
+	@JsonbProperty
+	private AssistantAudio audio;
+	
+	@JsonbProperty("tool_calls")
+	private ToolCall[] toolCalls;
+	
+//	@JsonbProperty("function_calls")
+//	@Deprecated
+//	private Function[] functionCalls;
 	
 	/**
 	 * 
@@ -24,25 +39,18 @@ public class ChatRequestAssistantMessage extends ChatRequestMessage<String> {
 		// TODO Auto-generated constructor stub
 	}
 
-	@JsonbProperty
-	private String name;
-	
-	@JsonbProperty("tool_calls")
-	private ToolCall[] toolCalls;
-	
-	@JsonbProperty("function_calls")
-	@Deprecated
-	private Function[] functionCalls;
-	
-	@Override
-	public void setContent(String content) {
-		this.content = content;
+	/**
+	 * @return the refusal
+	 */
+	public String getRefusal() {
+		return refusal;
 	}
 
-	@Override
-	public String getContent() {
-		// TODO Auto-generated method stub
-		return content;
+	/**
+	 * @param refusal the refusal to set
+	 */
+	public void setRefusal(String refusal) {
+		this.refusal = refusal;
 	}
 
 	/**
@@ -60,6 +68,20 @@ public class ChatRequestAssistantMessage extends ChatRequestMessage<String> {
 	}
 
 	/**
+	 * @return the audio
+	 */
+	public AssistantAudio getAudio() {
+		return audio;
+	}
+
+	/**
+	 * @param audio the audio to set
+	 */
+	public void setAudio(AssistantAudio audio) {
+		this.audio = audio;
+	}
+
+	/**
 	 * @return the toolCalls
 	 */
 	public ToolCall[] getToolCalls() {
@@ -73,17 +95,17 @@ public class ChatRequestAssistantMessage extends ChatRequestMessage<String> {
 		this.toolCalls = toolCalls;
 	}
 
-	/**
-	 * @return the functionCalls
-	 */
-	public Function[] getFunctionCalls() {
-		return functionCalls;
-	}
-
-	/**
-	 * @param functionCalls the functionCalls to set
-	 */
-	public void setFunctionCalls(Function[] functionCalls) {
-		this.functionCalls = functionCalls;
-	}
+//	/**
+//	 * @return the functionCalls
+//	 */
+//	public Function[] getFunctionCalls() {
+//		return functionCalls;
+//	}
+//
+//	/**
+//	 * @param functionCalls the functionCalls to set
+//	 */
+//	public void setFunctionCalls(Function[] functionCalls) {
+//		this.functionCalls = functionCalls;
+//	}
 }

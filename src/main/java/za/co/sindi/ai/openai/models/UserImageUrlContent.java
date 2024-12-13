@@ -13,21 +13,21 @@ import jakarta.json.bind.annotation.JsonbProperty;
  */
 public class UserImageUrlContent extends UserContent {
 
-	@JsonbProperty
-	private String text;
+	@JsonbProperty("image_url")
+	private ImageUrl imageUrl;
 
 	/**
-	 * @param text
+	 * @param imageUrl
 	 */
-	public UserImageUrlContent(String text) {
+	public UserImageUrlContent(ImageUrl imageUrl) {
 		super();
-		this.text = Objects.requireNonNull(text, "A text is required.");
+		this.imageUrl = Objects.requireNonNull(imageUrl, "An Image Url object is required.");
 	}
 
 	/**
-	 * @return the text
+	 * @return the imageUrl
 	 */
-	public String getText() {
-		return text;
+	public ImageUrl getImageUrl() {
+		return imageUrl;
 	}
 }

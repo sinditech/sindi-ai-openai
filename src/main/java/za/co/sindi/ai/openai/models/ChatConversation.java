@@ -25,6 +25,12 @@ public class ChatConversation implements Serializable {
 	@JsonbProperty
 	private String model;
 	
+	@JsonbProperty
+	private Boolean store;
+	
+	@JsonbProperty
+	private Map<String, Object> metadata;
+	
 	@JsonbProperty("frequency_penalty")
 	private Double frequencyPenalty;
 	
@@ -46,6 +52,15 @@ public class ChatConversation implements Serializable {
 	
 	@JsonbProperty
 	private Integer n;
+	
+	@JsonbProperty
+	private String[] modalities;
+	
+	@JsonbProperty
+	private StaticContent<?> prediction;
+	
+	@JsonbProperty
+	private Audio audio;
 	
 	@JsonbProperty("presence_penalty")
 	private Double presencePenalty;
@@ -94,6 +109,34 @@ public class ChatConversation implements Serializable {
 		super();
 		this.messages = Objects.requireNonNull(messages);
 		this.model = Objects.requireNonNull(model);
+	}
+
+	/**
+	 * @return the store
+	 */
+	public Boolean getStore() {
+		return store;
+	}
+
+	/**
+	 * @param store the store to set
+	 */
+	public void setStore(Boolean store) {
+		this.store = store;
+	}
+
+	/**
+	 * @return the metadata
+	 */
+	public Map<String, Object> getMetadata() {
+		return metadata;
+	}
+
+	/**
+	 * @param metadata the metadata to set
+	 */
+	public void setMetadata(Map<String, Object> metadata) {
+		this.metadata = metadata;
 	}
 
 	/**
@@ -155,6 +198,7 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the maxTokens
 	 */
+	@Deprecated
 	public Integer getMaxTokens() {
 		return maxTokens;
 	}
@@ -162,8 +206,23 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @param maxTokens the maxTokens to set
 	 */
+	@Deprecated
 	public void setMaxTokens(Integer maxTokens) {
 		this.maxTokens = maxTokens;
+	}
+
+	/**
+	 * @return the maxCompletionTokens
+	 */
+	public Integer getMaxCompletionTokens() {
+		return maxCompletionTokens;
+	}
+
+	/**
+	 * @param maxCompletionTokens the maxCompletionTokens to set
+	 */
+	public void setMaxCompletionTokens(Integer maxCompletionTokens) {
+		this.maxCompletionTokens = maxCompletionTokens;
 	}
 
 	/**
@@ -178,6 +237,48 @@ public class ChatConversation implements Serializable {
 	 */
 	public void setN(Integer n) {
 		this.n = n;
+	}
+
+	/**
+	 * @return the modalities
+	 */
+	public String[] getModalities() {
+		return modalities;
+	}
+
+	/**
+	 * @param modalities the modalities to set
+	 */
+	public void setModalities(String[] modalities) {
+		this.modalities = modalities;
+	}
+
+	/**
+	 * @return the prediction
+	 */
+	public StaticContent<?> getPrediction() {
+		return prediction;
+	}
+
+	/**
+	 * @param prediction the prediction to set
+	 */
+	public void setPrediction(StaticContent<?> prediction) {
+		this.prediction = prediction;
+	}
+
+	/**
+	 * @return the audio
+	 */
+	public Audio getAudio() {
+		return audio;
+	}
+
+	/**
+	 * @param audio the audio to set
+	 */
+	public void setAudio(Audio audio) {
+		this.audio = audio;
 	}
 
 	/**
@@ -223,6 +324,20 @@ public class ChatConversation implements Serializable {
 	}
 
 	/**
+	 * @return the serviceTier
+	 */
+	public ServiceTier getServiceTier() {
+		return serviceTier;
+	}
+
+	/**
+	 * @param serviceTier the serviceTier to set
+	 */
+	public void setServiceTier(ServiceTier serviceTier) {
+		this.serviceTier = serviceTier;
+	}
+
+	/**
 	 * @return the stop
 	 */
 	public String[] getStop() {
@@ -248,6 +363,20 @@ public class ChatConversation implements Serializable {
 	 */
 	public void setStream(Boolean stream) {
 		this.stream = stream;
+	}
+
+	/**
+	 * @return the streamOptions
+	 */
+	public StreamOptions getStreamOptions() {
+		return streamOptions;
+	}
+
+	/**
+	 * @param streamOptions the streamOptions to set
+	 */
+	public void setStreamOptions(StreamOptions streamOptions) {
+		this.streamOptions = streamOptions;
 	}
 
 	/**
@@ -302,8 +431,29 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @param toolChoice the toolChoice to set
 	 */
-	public void setToolChoice(Object toolChoice) {
+	public void setToolChoice(String toolChoice) {
 		this.toolChoice = toolChoice;
+	}
+	
+	/**
+	 * @param toolChoice the toolChoice to set
+	 */
+	public void setToolChoice(ToolChoice toolChoice) {
+		this.toolChoice = toolChoice;
+	}
+
+	/**
+	 * @return the parallelToolCalls
+	 */
+	public Boolean getParallelToolCalls() {
+		return parallelToolCalls;
+	}
+
+	/**
+	 * @param parallelToolCalls the parallelToolCalls to set
+	 */
+	public void setParallelToolCalls(Boolean parallelToolCalls) {
+		this.parallelToolCalls = parallelToolCalls;
 	}
 
 	/**

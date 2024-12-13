@@ -15,11 +15,10 @@ import jakarta.json.bind.annotation.JsonbTypeInfo;
 @JsonbTypeInfo(
 		key = "type",
 		value = {
-		    @JsonbSubtype(alias="text", type=UserTextContent.class),
-		    @JsonbSubtype(alias="image_url", type=UserImageUrlContent.class),
-		    @JsonbSubtype(alias="input_audio", type=UserInputAudioContent.class)
+		    @JsonbSubtype(alias="text", type=AssistantTextContent.class),
+		    @JsonbSubtype(alias="refusal", type=AssistantRefusalContent.class),
 		}
 	)
-public abstract class UserContent implements Serializable {
+public abstract class AssistantContent implements Serializable {
 
 }

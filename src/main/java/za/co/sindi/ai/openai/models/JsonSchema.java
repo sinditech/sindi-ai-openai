@@ -1,19 +1,15 @@
-/**
- * 
- */
 package za.co.sindi.ai.openai.models;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import jakarta.json.bind.annotation.JsonbProperty;
 
 /**
  * @author Buhake Sindi
  * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/api-reference/chat/object">OpenAI API reference documentation.</a>
+ * @see <a href="https://platform.openai.com/docs/api-reference/chat/create#chat-create-prediction">OpenAI API reference documentation.</a>
  */
-public class Function implements Serializable {
+public class JsonSchema implements Serializable {
 
 	@JsonbProperty
 	private String description;
@@ -22,38 +18,16 @@ public class Function implements Serializable {
 	private String name;
 	
 	@JsonbProperty
-	private Parameters parameters;
+	private Schema schema;
 	
 	@JsonbProperty
 	private Boolean strict;
 
 	/**
-	 * 
-	 */
-	public Function() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
 	 * @param name
 	 */
-	public Function(String name) {
+	public JsonSchema(String name) {
 		super();
-		this.name = Objects.requireNonNull(name);
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -72,17 +46,17 @@ public class Function implements Serializable {
 	}
 
 	/**
-	 * @return the parameters
+	 * @return the schema
 	 */
-	public Parameters getParameters() {
-		return parameters;
+	public Schema getSchema() {
+		return schema;
 	}
 
 	/**
-	 * @param parameters the parameters to set
+	 * @param schema the schema to set
 	 */
-	public void setParameters(Parameters parameters) {
-		this.parameters = parameters;
+	public void setSchema(Schema schema) {
+		this.schema = schema;
 	}
 
 	/**
@@ -97,5 +71,12 @@ public class Function implements Serializable {
 	 */
 	public void setStrict(Boolean strict) {
 		this.strict = strict;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 }

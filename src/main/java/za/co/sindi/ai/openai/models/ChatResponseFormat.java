@@ -11,6 +11,7 @@ package za.co.sindi.ai.openai.models;
 public enum ChatResponseFormat {
 	TEXT("text")
 	,JSON_OBJECT("json_object")
+	,JSON_SCHEMA("json_schema")
 	;
 	private final String format;
 

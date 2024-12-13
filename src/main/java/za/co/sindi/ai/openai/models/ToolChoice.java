@@ -13,48 +13,29 @@ import jakarta.json.bind.annotation.JsonbProperty;
  * @since 23 January 2024
  * @see <a href="https://platform.openai.com/docs/api-reference/chat/object">OpenAI API reference documentation.</a>
  */
-public class ToolCall implements Serializable {
-
-	@JsonbProperty
-	private String id;
+public class ToolChoice implements Serializable {
 	
 	@JsonbProperty
 	private String type;
 	
 	@JsonbProperty
-	private ToolCallFunction function;
+	private ToolChoiceFunction function;
 
 	/**
 	 * 
 	 */
-	public ToolCall() {
+	public ToolChoice() {
 		super();
 		// TODO Auto-generated constructor stub
-		this.type = "function";
 	}
 
 	/**
-	 * @param id
 	 * @param function
 	 */
-	public ToolCall(String id, ToolCallFunction function) {
-		this();
-		this.id = Objects.requireNonNull(id);
+	public ToolChoice(ToolChoiceFunction function) {
+		super();
+		this.type = "function";
 		this.function = Objects.requireNonNull(function);
-	}
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	/**
@@ -74,14 +55,14 @@ public class ToolCall implements Serializable {
 	/**
 	 * @return the function
 	 */
-	public ToolCallFunction getFunction() {
+	public ToolChoiceFunction getFunction() {
 		return function;
 	}
 
 	/**
 	 * @param function the function to set
 	 */
-	public void setFunction(ToolCallFunction function) {
+	public void setFunction(ToolChoiceFunction function) {
 		this.function = function;
 	}
 }
