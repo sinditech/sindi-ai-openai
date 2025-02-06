@@ -160,9 +160,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public Stream<ChatCompletionChunk> sendStreaming(ChatCompletionRequest request) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		//Must stream, regardless
-		if (request.getConversation().getStream() == null || !Boolean.TRUE.equals(request.getConversation().getStream())) {
-			request.getConversation().setStream(true);
-		}
+		request.getConversation().setStream(true);
 		
 		SSEEventProcessor processor = new SSEEventProcessor();
 		AllEventSubscriber subscriber = new AllEventSubscriber();
@@ -175,9 +173,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	@Override
 	public CompletableFuture<Stream<ChatCompletionChunk>> sendAsyncStreaming(ChatCompletionRequest request) {
 		// TODO Auto-generated method stub
-		if (request.getConversation().getStream() == null || !Boolean.TRUE.equals(request.getConversation().getStream())) {
-			request.getConversation().setStream(true);
-		}
+		request.getConversation().setStream(true);
 		SSEEventProcessor processor = new SSEEventProcessor();
 		AllEventSubscriber subscriber = new AllEventSubscriber();
 		processor.subscribe(subscriber);
