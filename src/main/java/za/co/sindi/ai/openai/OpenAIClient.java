@@ -11,6 +11,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.stream.Stream;
 
+import za.co.sindi.ai.openai.assistants.CreateAssistantRequest;
+import za.co.sindi.ai.openai.assistants.DeleteAssistantRequest;
+import za.co.sindi.ai.openai.assistants.ListAssistantRequest;
+import za.co.sindi.ai.openai.assistants.ModifyAssistantRequest;
+import za.co.sindi.ai.openai.assistants.RetrieveAssistantRequest;
 import za.co.sindi.ai.openai.audio.AudioSpeechRequest;
 import za.co.sindi.ai.openai.audio.AudioTranscriptionRequest;
 import za.co.sindi.ai.openai.audio.AudioTranslationRequest;
@@ -33,6 +38,8 @@ import za.co.sindi.ai.openai.images.ImageVariationRequest;
 import za.co.sindi.ai.openai.model.DeleteModelRequest;
 import za.co.sindi.ai.openai.model.ListModelRequest;
 import za.co.sindi.ai.openai.model.RetrieveModelRequest;
+import za.co.sindi.ai.openai.models.Assistant;
+import za.co.sindi.ai.openai.models.AssistantList;
 import za.co.sindi.ai.openai.models.ChatCompletion;
 import za.co.sindi.ai.openai.models.ChatCompletionChunk;
 import za.co.sindi.ai.openai.models.Completion;
@@ -133,8 +140,20 @@ public interface OpenAIClient {
 	public DeletionStatus send(final DeleteModelRequest request) throws IOException, InterruptedException;
 	public CompletableFuture<DeletionStatus> sendAsync(final DeleteModelRequest request);
 	
-	// ------------------- Embeddings -------------------
+	// ------------------- Moderation -------------------
 	public Moderation send(final CreateModerationRequest request) throws IOException, InterruptedException;
 	public CompletableFuture<Moderation> sendAsync(final CreateModerationRequest request);
+	
+	// ------------------- Assistants -------------------
+	public Assistant send(final CreateAssistantRequest request) throws IOException, InterruptedException;
+	public CompletableFuture<Assistant> sendAsync(final CreateAssistantRequest request);
+	public AssistantList send(final ListAssistantRequest request) throws IOException, InterruptedException;
+	public CompletableFuture<AssistantList> sendAsync(final ListAssistantRequest request);
+	public Assistant send(final RetrieveAssistantRequest request) throws IOException, InterruptedException;
+	public CompletableFuture<Assistant> sendAsync(final RetrieveAssistantRequest request) throws IOException;
+	public Assistant send(final ModifyAssistantRequest request) throws IOException, InterruptedException;
+	public CompletableFuture<Assistant> sendAsync(final ModifyAssistantRequest request) throws IOException;
+	public DeletionStatus send(final DeleteAssistantRequest request) throws IOException, InterruptedException;
+	public CompletableFuture<DeletionStatus> sendAsync(final DeleteAssistantRequest request);
 }
 

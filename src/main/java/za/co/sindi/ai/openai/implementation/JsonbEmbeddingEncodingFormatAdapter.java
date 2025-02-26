@@ -4,7 +4,7 @@
 package za.co.sindi.ai.openai.implementation;
 
 import jakarta.json.bind.adapter.JsonbAdapter;
-import za.co.sindi.ai.openai.models.EmbeddingEncodingFormat;
+import za.co.sindi.ai.openai.embeddings.EmbeddingEncodingFormat;
 
 /**
  * @author Buhake Sindi

@@ -4,9 +4,6 @@
 package za.co.sindi.ai.openai.completions;
 
 import za.co.sindi.ai.openai.OpenAIRequest;
-import za.co.sindi.ai.openai.models.CompletionInput;
-import za.co.sindi.ai.openai.models.CompletionInputString;
-import za.co.sindi.ai.openai.models.CompletionInputStringArray;
 
 /**
  * @author Buhake Sindi

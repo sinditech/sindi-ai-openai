@@ -87,6 +87,10 @@ public abstract class AbstractOpenAIClient implements OpenAIClient {
 		
 		return httpRequestBuilder;
 	}
+	
+	protected HttpRequest.Builder applyNewAssistant(final HttpRequest.Builder builder) {
+		return builder.header("OpenAI-Beta", "assistants=v2");
+	}
 
 	protected <R> HttpResponse<Either<R, String>> send(final HttpRequest.Builder httpRequestBuilder, final BodyHandler<R> bodyHandler) throws IOException, InterruptedException {
 		HttpRequest httpRequest = httpRequestBuilder.build();

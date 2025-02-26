@@ -16,9 +16,10 @@ import jakarta.json.bind.annotation.JsonbTypeInfo;
 @JsonbTypeInfo(
 	key = "type",
 	value = {
-	    @JsonbSubtype(alias="function", type=ToolChoiceFunction.class),
+	    @JsonbSubtype(alias="code_interpreter", type=CodeInterpreterToolResource.class),
+	    @JsonbSubtype(alias="file_search", type=FileSearchToolResource.class),
 	}
 )
-public abstract class ToolChoice implements Serializable {
+public abstract class ToolResource implements Serializable {
 	
 }

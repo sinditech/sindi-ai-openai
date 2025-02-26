@@ -1,11 +1,12 @@
 /**
  * 
  */
-package za.co.sindi.ai.openai.models;
+package za.co.sindi.ai.openai.embeddings;
 
 import java.util.Objects;
 
 import jakarta.json.bind.annotation.JsonbProperty;
+import za.co.sindi.ai.openai.models.Embeddings;
 
 /**
  * @author Buhake Sindi

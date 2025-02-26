@@ -1,7 +1,7 @@
 /**
  * 
  */
-package za.co.sindi.ai.openai.models;
+package za.co.sindi.ai.openai.embeddings;
 
 /**
  * @author Buhake Sindi

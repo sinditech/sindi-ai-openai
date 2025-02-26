@@ -1,7 +1,7 @@
 /**
  * 
  */
-package za.co.sindi.ai.openai.models;
+package za.co.sindi.ai.openai.completions;
 
 import java.io.Serializable;
 import java.util.Map;

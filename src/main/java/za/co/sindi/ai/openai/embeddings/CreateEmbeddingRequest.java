@@ -4,11 +4,6 @@
 package za.co.sindi.ai.openai.embeddings;
 
 import za.co.sindi.ai.openai.OpenAIRequest;
-import za.co.sindi.ai.openai.models.EmbeddingInput;
-import za.co.sindi.ai.openai.models.EmbeddingInputIntArray;
-import za.co.sindi.ai.openai.models.EmbeddingInputIntArrays;
-import za.co.sindi.ai.openai.models.EmbeddingInputString;
-import za.co.sindi.ai.openai.models.EmbeddingInputStringArray;
 import za.co.sindi.ai.openai.models.Embeddings;
 
 /**

@@ -21,7 +21,7 @@ public class JSONObjectTransformer implements ObjectTransformer {
 							new JsonbAudioTranscriptResponseFormatAdapter(),
 							new JsonbAudioVoiceAdapter(), 
 							new JsonbEmbeddingEncodingFormatAdapter(), 
-							new JsonbChatResponseFormatAdapter(),
+//							new JsonbChatResponseFormatAdapter(),
 							new JsonbImageResponseFormatAdapter(),
 							new JsonbAudioSpeechResponseFormatAdapter(),
 							new JsonbTTSModelFormatAdapter(), 
@@ -33,7 +33,8 @@ public class JSONObjectTransformer implements ObjectTransformer {
 							new JsonbDALLEModelFormatAdapter(),
 							new JsonbGPTModelFormatAdapter(),
 							new JsonbImageDetailAdapter(),
-							new JsonbServiceTierAdapter());
+							new JsonbServiceTierAdapter(),
+							new JsonbSortOrderAdapter());
 		return config;
 	}
 

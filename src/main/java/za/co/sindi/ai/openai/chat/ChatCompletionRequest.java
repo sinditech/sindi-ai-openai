@@ -6,7 +6,6 @@ package za.co.sindi.ai.openai.chat;
 import java.util.List;
 
 import za.co.sindi.ai.openai.OpenAIRequest;
-import za.co.sindi.ai.openai.models.ChatConversation;
 import za.co.sindi.ai.openai.models.ChatRequestMessage;
 
 /**

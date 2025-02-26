@@ -1,7 +1,7 @@
 /**
  * 
  */
-package za.co.sindi.ai.openai.models;
+package za.co.sindi.ai.openai.chat;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,6 +9,14 @@ import java.util.Map;
 import java.util.Objects;
 
 import jakarta.json.bind.annotation.JsonbProperty;
+import za.co.sindi.ai.openai.models.Audio;
+import za.co.sindi.ai.openai.models.ChatRequestMessage;
+import za.co.sindi.ai.openai.models.FunctionTool;
+import za.co.sindi.ai.openai.models.ResponseFormat;
+import za.co.sindi.ai.openai.models.ServiceTier;
+import za.co.sindi.ai.openai.models.StaticContent;
+import za.co.sindi.ai.openai.models.StreamOptions;
+import za.co.sindi.ai.openai.models.ToolChoice;
 
 /**
  * Represents a chat completion response returned by model, based on the provided input.
@@ -66,7 +74,7 @@ public class ChatConversation implements Serializable {
 	private Double presencePenalty;
 	
 	@JsonbProperty("response_format")
-	private ChatCompletionResponseFormat responseFormat;
+	private ResponseFormat responseFormat;
 	
 	@JsonbProperty
 	private Integer seed;
@@ -90,7 +98,7 @@ public class ChatConversation implements Serializable {
 	private Integer topP;
 	
 	@JsonbProperty
-	private Tool[] tools;
+	private FunctionTool[] tools;
 	
 	@JsonbProperty("tool_choice")
 	private Object toolChoice;
@@ -298,14 +306,14 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the responseFormat
 	 */
-	public ChatCompletionResponseFormat getResponseFormat() {
+	public ResponseFormat getResponseFormat() {
 		return responseFormat;
 	}
 
 	/**
 	 * @param responseFormat the responseFormat to set
 	 */
-	public void setResponseFormat(ChatCompletionResponseFormat responseFormat) {
+	public void setResponseFormat(ResponseFormat responseFormat) {
 		this.responseFormat = responseFormat;
 	}
 
@@ -410,14 +418,14 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the tools
 	 */
-	public Tool[] getTools() {
+	public FunctionTool[] getTools() {
 		return tools;
 	}
 
 	/**
 	 * @param tools the tools to set
 	 */
-	public void setTools(Tool[] tools) {
+	public void setTools(FunctionTool[] tools) {
 		this.tools = tools;
 	}
 

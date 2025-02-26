@@ -3,7 +3,6 @@
  */
 package za.co.sindi.ai.openai.models;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.json.bind.annotation.JsonbProperty;
@@ -15,18 +14,15 @@ import jakarta.json.bind.annotation.JsonbProperty;
  * @since 23 January 2024
  * @see <a href="https://platform.openai.com/docs/api-reference/chat/object">OpenAI API reference documentation.</a>
  */
-public class ChatCompletionResponseFormat implements Serializable {
+public class JsonSchemaResponseFormat extends ResponseFormat {
 
-	@JsonbProperty
-	private ChatResponseFormat type;
-	
 	@JsonbProperty
 	private JsonSchema schema;
 	
 	/**
 	 * 
 	 */
-	public ChatCompletionResponseFormat() {
+	public JsonSchemaResponseFormat() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,24 +30,9 @@ public class ChatCompletionResponseFormat implements Serializable {
 	/**
 	 * @param schema
 	 */
-	public ChatCompletionResponseFormat(JsonSchema schema) {
+	public JsonSchemaResponseFormat(JsonSchema schema) {
 		super();
 		this.schema = Objects.requireNonNull(schema);
-		setType(ChatResponseFormat.JSON_SCHEMA);
-	}
-
-	/**
-	 * @return the type
-	 */
-	public ChatResponseFormat getType() {
-		return type;
-	}
-
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(ChatResponseFormat type) {
-		this.type = type;
 	}
 
 	/**
