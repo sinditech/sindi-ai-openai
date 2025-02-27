@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import jakarta.json.bind.annotation.JsonbProperty;
+import za.co.sindi.ai.openai.models.ResponseFormat;
 
 /**
  * Represents a chat completion response returned by model, based on the provided input.
@@ -49,7 +50,7 @@ public abstract class CompletionInput<T extends Serializable> implements Seriali
 	private Double presencePenalty;
 	
 	@JsonbProperty("response_format")
-	private ChatResponseFormat responseFormat;
+	private ResponseFormat responseFormat;
 	
 	@JsonbProperty
 	private Integer seed;
@@ -181,14 +182,14 @@ public abstract class CompletionInput<T extends Serializable> implements Seriali
 	/**
 	 * @return the responseFormat
 	 */
-	public ChatResponseFormat getResponseFormat() {
+	public ResponseFormat getResponseFormat() {
 		return responseFormat;
 	}
 
 	/**
 	 * @param responseFormat the responseFormat to set
 	 */
-	public void setResponseFormat(ChatResponseFormat responseFormat) {
+	public void setResponseFormat(ResponseFormat responseFormat) {
 		this.responseFormat = responseFormat;
 	}
 
