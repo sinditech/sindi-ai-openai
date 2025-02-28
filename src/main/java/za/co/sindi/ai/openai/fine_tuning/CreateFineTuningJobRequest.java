@@ -4,7 +4,6 @@
 package za.co.sindi.ai.openai.fine_tuning;
 
 import za.co.sindi.ai.openai.OpenAIRequest;
-import za.co.sindi.ai.openai.models.FineTuningJobInput;
 
 /**
  * @author Buhake Sindi

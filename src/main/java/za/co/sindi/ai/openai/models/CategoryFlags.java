@@ -25,13 +25,19 @@ public class CategoryFlags implements Serializable {
 	@JsonbProperty("harassment/threatening")
 	private boolean harassmentIncludesThreatening;
 	
-	@JsonbProperty("self_harm")
+	@JsonbProperty
+	private boolean illicit;
+	
+	@JsonbProperty("illicit/violence")
+	private boolean illicitIncludesViolence;
+	
+	@JsonbProperty("self-harm")
 	private boolean selfHarm;
 	
-	@JsonbProperty("self_harm/intent")
+	@JsonbProperty("self-harm/intent")
 	private boolean selfHarmIncludesIntent;
 	
-	@JsonbProperty("self_harm/instructions")
+	@JsonbProperty("self-harm/instructions")
 	private boolean selfHarmIncludesInstructions;
 	
 	@JsonbProperty
@@ -100,6 +106,34 @@ public class CategoryFlags implements Serializable {
 	 */
 	public void setHarassmentIncludesThreatening(boolean harassmentIncludesThreatening) {
 		this.harassmentIncludesThreatening = harassmentIncludesThreatening;
+	}
+
+	/**
+	 * @return the illicit
+	 */
+	public boolean isIllicit() {
+		return illicit;
+	}
+
+	/**
+	 * @param illicit the illicit to set
+	 */
+	public void setIllicit(boolean illicit) {
+		this.illicit = illicit;
+	}
+
+	/**
+	 * @return the illicitIncludesViolence
+	 */
+	public boolean isIllicitIncludesViolence() {
+		return illicitIncludesViolence;
+	}
+
+	/**
+	 * @param illicitIncludesViolence the illicitIncludesViolence to set
+	 */
+	public void setIllicitIncludesViolence(boolean illicitIncludesViolence) {
+		this.illicitIncludesViolence = illicitIncludesViolence;
 	}
 
 	/**

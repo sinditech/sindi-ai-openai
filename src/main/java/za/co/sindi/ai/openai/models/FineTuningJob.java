@@ -54,6 +54,18 @@ public class FineTuningJob implements Serializable {
 	
 	@JsonbProperty("Validation_file")
 	private String validationFile;
+	
+	@JsonbProperty
+	private FineTuningIntegration[] integrations;
+	
+	@JsonbProperty
+	private Integer seed;
+	
+	@JsonbProperty("estimatated_finish")
+	private Long estimatedFinish;
+	
+	@JsonbProperty
+	private FineTuningMethod method;
 
 	/**
 	 * @return the id
@@ -249,5 +261,61 @@ public class FineTuningJob implements Serializable {
 	 */
 	public void setValidationFile(String validationFile) {
 		this.validationFile = validationFile;
+	}
+
+	/**
+	 * @return the integrations
+	 */
+	public FineTuningIntegration[] getIntegrations() {
+		return integrations;
+	}
+
+	/**
+	 * @param integrations the integrations to set
+	 */
+	public void setIntegrations(FineTuningIntegration[] integrations) {
+		this.integrations = integrations;
+	}
+
+	/**
+	 * @return the seed
+	 */
+	public Integer getSeed() {
+		return seed;
+	}
+
+	/**
+	 * @param seed the seed to set
+	 */
+	public void setSeed(Integer seed) {
+		this.seed = seed;
+	}
+
+	/**
+	 * @return the estimatedFinish
+	 */
+	public Long getEstimatedFinish() {
+		return estimatedFinish;
+	}
+
+	/**
+	 * @param estimatedFinish the estimatedFinish to set
+	 */
+	public void setEstimatedFinish(Long estimatedFinish) {
+		this.estimatedFinish = estimatedFinish;
+	}
+
+	/**
+	 * @return the method
+	 */
+	public FineTuningMethod getMethod() {
+		return method;
+	}
+
+	/**
+	 * @param method the method to set
+	 */
+	public void setMethod(FineTuningMethod method) {
+		this.method = method;
 	}
 }

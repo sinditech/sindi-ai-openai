@@ -6,11 +6,17 @@ package za.co.sindi.ai.openai.models;
 /**
  * @author Buhake Sindi
  * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/api-reference/files/create">Filesystem</a>
+ * @see <a href="https://platform.openai.com/docs/api-reference/files/create">Files</a>
  */
 public enum FilePurpose {
-	FINE_TUNE("fine-tune")
-	,ASSISTANTS("assistants")
+	ASSISTANTS("assistants")
+	,ASSISTANTS_OUTPUT("assistants_output")
+	,BATCH("batch")
+	,BATCH_OUTPUT("batch_output")
+	,FINE_TUNE("fine-tune")
+	,FINE_TUNE_RESULTS("fine-tune-results")
+	,VISION("vision")
+	
 	;
 	private final String format;
 

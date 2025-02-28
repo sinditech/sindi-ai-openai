@@ -21,6 +21,9 @@ public class ModerationResult implements Serializable {
 	
 	@JsonbProperty("category_scores")
 	private CategoryScores categoryScores;
+	
+	@JsonbProperty("category_applied_input_types")
+	private CategoryInputTypes categoryAppliedInputTypes;
 
 	/**
 	 * @return the flagged
@@ -62,5 +65,19 @@ public class ModerationResult implements Serializable {
 	 */
 	public void setCategoryScores(CategoryScores categoryScores) {
 		this.categoryScores = categoryScores;
-	}	
+	}
+
+	/**
+	 * @return the categoryAppliedInputTypes
+	 */
+	public CategoryInputTypes getCategoryAppliedInputTypes() {
+		return categoryAppliedInputTypes;
+	}
+
+	/**
+	 * @param categoryAppliedInputTypes the categoryAppliedInputTypes to set
+	 */
+	public void setCategoryAppliedInputTypes(CategoryInputTypes categoryAppliedInputTypes) {
+		this.categoryAppliedInputTypes = categoryAppliedInputTypes;
+	}
 }

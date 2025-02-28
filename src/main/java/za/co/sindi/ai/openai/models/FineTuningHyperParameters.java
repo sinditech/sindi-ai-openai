@@ -13,6 +13,9 @@ import jakarta.json.bind.annotation.JsonbProperty;
  */
 public class FineTuningHyperParameters implements Serializable {
 	
+	@JsonbProperty
+	private Double beta;
+	
 	@JsonbProperty("batch_size")
 	private Long batchSize;
 	
@@ -21,6 +24,20 @@ public class FineTuningHyperParameters implements Serializable {
 
 	@JsonbProperty("n_epochs")
 	private Long numberOfEpochs;
+
+	/**
+	 * @return the beta
+	 */
+	public Double getBeta() {
+		return beta;
+	}
+
+	/**
+	 * @param beta the beta to set
+	 */
+	public void setBeta(Double beta) {
+		this.beta = beta;
+	}
 
 	/**
 	 * @return the batchSize

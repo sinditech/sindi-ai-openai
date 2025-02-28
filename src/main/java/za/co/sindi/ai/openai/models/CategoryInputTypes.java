@@ -9,228 +9,228 @@ import jakarta.json.bind.annotation.JsonbProperty;
 
 /**
  * @author Buhake Sindi
- * @since 25 January 2024
+ * @since 28 February 2025
  */
-public class CategoryScores implements Serializable {
+public class CategoryInputTypes implements Serializable {
 
 	@JsonbProperty
-	private float hate;
+	private String[] hate;
 	
 	@JsonbProperty("hate/threatening")
-	private float hateIncludesThreatening;
+	private String[] hateIncludesThreatening;
 	
 	@JsonbProperty
-	private float harassment;
+	private String[] harassment;
 	
 	@JsonbProperty("harassment/threatening")
-	private float harassmentIncludesThreatening;
+	private String[] harassmentIncludesThreatening;
 	
 	@JsonbProperty
-	private float illicit;
+	private String[] illicit;
 	
 	@JsonbProperty("illicit/violence")
-	private float illicitIncludesViolence;
+	private String[] illicitIncludesViolence;
 	
 	@JsonbProperty("self-harm")
-	private float selfHarm;
+	private String[] selfHarm;
 	
 	@JsonbProperty("self-harm/intent")
-	private float selfHarmIncludesIntent;
+	private String[] selfHarmIncludesIntent;
 	
 	@JsonbProperty("self-harm/instructions")
-	private float selfHarmIncludesInstructions;
+	private String[] selfHarmIncludesInstructions;
 	
 	@JsonbProperty
-	private float sexual;
+	private String[] sexual;
 	
 	@JsonbProperty("sexual/minors")
-	private float sexualIncludesMinors;
+	private String[] sexualIncludesMinors;
 	
 	@JsonbProperty
-	private float violence;
+	private String[] violence;
 	
 	@JsonbProperty("violence/graphic")
-	private float violenceIncludesGraphic;
+	private String[] violenceIncludesGraphic;
 
 	/**
 	 * @return the hate
 	 */
-	public float getHate() {
+	public String[] getHate() {
 		return hate;
 	}
 
 	/**
 	 * @param hate the hate to set
 	 */
-	public void setHate(float hate) {
+	public void setHate(String[] hate) {
 		this.hate = hate;
 	}
 
 	/**
 	 * @return the hateIncludesThreatening
 	 */
-	public float getHateIncludesThreatening() {
+	public String[] getHateIncludesThreatening() {
 		return hateIncludesThreatening;
 	}
 
 	/**
 	 * @param hateIncludesThreatening the hateIncludesThreatening to set
 	 */
-	public void setHateIncludesThreatening(float hateIncludesThreatening) {
+	public void setHateIncludesThreatening(String[] hateIncludesThreatening) {
 		this.hateIncludesThreatening = hateIncludesThreatening;
 	}
 
 	/**
 	 * @return the harassment
 	 */
-	public float getHarassment() {
+	public String[] getHarassment() {
 		return harassment;
 	}
 
 	/**
 	 * @param harassment the harassment to set
 	 */
-	public void setHarassment(float harassment) {
+	public void setHarassment(String[] harassment) {
 		this.harassment = harassment;
 	}
 
 	/**
 	 * @return the harassmentIncludesThreatening
 	 */
-	public float getHarassmentIncludesThreatening() {
+	public String[] getHarassmentIncludesThreatening() {
 		return harassmentIncludesThreatening;
 	}
 
 	/**
 	 * @param harassmentIncludesThreatening the harassmentIncludesThreatening to set
 	 */
-	public void setHarassmentIncludesThreatening(float harassmentIncludesThreatening) {
+	public void setHarassmentIncludesThreatening(String[] harassmentIncludesThreatening) {
 		this.harassmentIncludesThreatening = harassmentIncludesThreatening;
 	}
 
 	/**
 	 * @return the illicit
 	 */
-	public float getIllicit() {
+	public String[] getIllicit() {
 		return illicit;
 	}
 
 	/**
 	 * @param illicit the illicit to set
 	 */
-	public void setIllicit(float illicit) {
+	public void setIllicit(String[] illicit) {
 		this.illicit = illicit;
 	}
 
 	/**
 	 * @return the illicitIncludesViolence
 	 */
-	public float getIllicitIncludesViolence() {
+	public String[] getIllicitIncludesViolence() {
 		return illicitIncludesViolence;
 	}
 
 	/**
 	 * @param illicitIncludesViolence the illicitIncludesViolence to set
 	 */
-	public void setIllicitIncludesViolence(float illicitIncludesViolence) {
+	public void setIllicitIncludesViolence(String[] illicitIncludesViolence) {
 		this.illicitIncludesViolence = illicitIncludesViolence;
 	}
 
 	/**
 	 * @return the selfHarm
 	 */
-	public float getSelfHarm() {
+	public String[] getSelfHarm() {
 		return selfHarm;
 	}
 
 	/**
 	 * @param selfHarm the selfHarm to set
 	 */
-	public void setSelfHarm(float selfHarm) {
+	public void setSelfHarm(String[] selfHarm) {
 		this.selfHarm = selfHarm;
 	}
 
 	/**
 	 * @return the selfHarmIncludesIntent
 	 */
-	public float getSelfHarmIncludesIntent() {
+	public String[] getSelfHarmIncludesIntent() {
 		return selfHarmIncludesIntent;
 	}
 
 	/**
 	 * @param selfHarmIncludesIntent the selfHarmIncludesIntent to set
 	 */
-	public void setSelfHarmIncludesIntent(float selfHarmIncludesIntent) {
+	public void setSelfHarmIncludesIntent(String[] selfHarmIncludesIntent) {
 		this.selfHarmIncludesIntent = selfHarmIncludesIntent;
 	}
 
 	/**
 	 * @return the selfHarmIncludesInstructions
 	 */
-	public float getSelfHarmIncludesInstructions() {
+	public String[] getSelfHarmIncludesInstructions() {
 		return selfHarmIncludesInstructions;
 	}
 
 	/**
 	 * @param selfHarmIncludesInstructions the selfHarmIncludesInstructions to set
 	 */
-	public void setSelfHarmIncludesInstructions(float selfHarmIncludesInstructions) {
+	public void setSelfHarmIncludesInstructions(String[] selfHarmIncludesInstructions) {
 		this.selfHarmIncludesInstructions = selfHarmIncludesInstructions;
 	}
 
 	/**
 	 * @return the sexual
 	 */
-	public float getSexual() {
+	public String[] getSexual() {
 		return sexual;
 	}
 
 	/**
 	 * @param sexual the sexual to set
 	 */
-	public void setSexual(float sexual) {
+	public void setSexual(String[] sexual) {
 		this.sexual = sexual;
 	}
 
 	/**
 	 * @return the sexualIncludesMinors
 	 */
-	public float getSexualIncludesMinors() {
+	public String[] getSexualIncludesMinors() {
 		return sexualIncludesMinors;
 	}
 
 	/**
 	 * @param sexualIncludesMinors the sexualIncludesMinors to set
 	 */
-	public void setSexualIncludesMinors(float sexualIncludesMinors) {
+	public void setSexualIncludesMinors(String[] sexualIncludesMinors) {
 		this.sexualIncludesMinors = sexualIncludesMinors;
 	}
 
 	/**
 	 * @return the violence
 	 */
-	public float getViolence() {
+	public String[] getViolence() {
 		return violence;
 	}
 
 	/**
 	 * @param violence the violence to set
 	 */
-	public void setViolence(float violence) {
+	public void setViolence(String[] violence) {
 		this.violence = violence;
 	}
 
 	/**
 	 * @return the violenceIncludesGraphic
 	 */
-	public float getViolenceIncludesGraphic() {
+	public String[] getViolenceIncludesGraphic() {
 		return violenceIncludesGraphic;
 	}
 
 	/**
 	 * @param violenceIncludesGraphic the violenceIncludesGraphic to set
 	 */
-	public void setViolenceIncludesGraphic(float violenceIncludesGraphic) {
+	public void setViolenceIncludesGraphic(String[] violenceIncludesGraphic) {
 		this.violenceIncludesGraphic = violenceIncludesGraphic;
 	}
 }

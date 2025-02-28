@@ -29,6 +29,9 @@ public class ChatCompletionChunk implements Serializable {
 	@JsonbProperty
 	private String model;
 	
+	@JsonbProperty("service_tier")
+	private String serviceTier;
+	
 	@JsonbProperty
 	private String systemFingerprint;
 	

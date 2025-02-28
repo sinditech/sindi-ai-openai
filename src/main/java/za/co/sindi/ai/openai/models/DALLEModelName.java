@@ -8,7 +8,7 @@ package za.co.sindi.ai.openai.models;
  * @since 23 January 2024
  * @see <a href="https://platform.openai.com/docs/models/overview">Model Overview</a>
  */
-public enum DallEModelName {
+public enum DALLEModelName {
 	DALL_E_3("dall-e-3")
 	,DALL_E_2("dall-e-2")
 	;
@@ -17,12 +17,12 @@ public enum DallEModelName {
 	/**
 	 * @param model
 	 */
-	private DallEModelName(String model) {
+	private DALLEModelName(String model) {
 		this.model = model;
 	}
 	
-	public static DallEModelName of(final String value) {
-		for (DallEModelName model : values()) {
+	public static DALLEModelName of(final String value) {
+		for (DALLEModelName model : values()) {
 			if (model.model.equals(value)) return model;
 		}
 		

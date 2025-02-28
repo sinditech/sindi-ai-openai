@@ -4,9 +4,6 @@
 package za.co.sindi.ai.openai.moderations;
 
 import za.co.sindi.ai.openai.OpenAIRequest;
-import za.co.sindi.ai.openai.models.ModerationInput;
-import za.co.sindi.ai.openai.models.ModerationInputString;
-import za.co.sindi.ai.openai.models.ModerationInputStringArray;
 import za.co.sindi.ai.openai.models.ModerationModelName;
 
 /**

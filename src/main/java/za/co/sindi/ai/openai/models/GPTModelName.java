@@ -9,7 +9,9 @@ package za.co.sindi.ai.openai.models;
  * @see <a href="https://platform.openai.com/docs/models/overview">Model Overview</a>
  */
 public enum GPTModelName {
-	GPT_3_5_TURBO("gpt-3.5-turbo")
+	GPT_4_5_PREVIEW("gpt-4.5-preview")
+	,GPT_4_5_PREVIEW_2025_02_27("gpt-4.5-preview-2025-02-27")
+	,GPT_3_5_TURBO("gpt-3.5-turbo")
 	,GPT_3_5_TURBO_0125("gpt-3.5-turbo-0125")
 	,GPT_3_5_TURBO_1106("gpt-3.5-turbo-1106")
 	,GPT_3_5_TURBO_INSTRUCT("gpt-3.5-turbo-instruct")

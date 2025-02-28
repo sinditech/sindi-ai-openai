@@ -22,6 +22,9 @@ public class File implements Serializable {
 	@JsonbProperty("created_at")
 	private long createdAt;
 	
+	@JsonbProperty("expires_at")
+	private long expiresAt;
+	
 	@JsonbProperty("filename")
 	private String fileName;
 	
@@ -29,7 +32,7 @@ public class File implements Serializable {
 	private String object;
 	
 	@JsonbProperty
-	private String purpose;
+	private FilePurpose purpose;
 
 	/**
 	 * @return the id
@@ -74,6 +77,20 @@ public class File implements Serializable {
 	}
 
 	/**
+	 * @return the expiresAt
+	 */
+	public long getExpiresAt() {
+		return expiresAt;
+	}
+
+	/**
+	 * @param expiresAt the expiresAt to set
+	 */
+	public void setExpiresAt(long expiresAt) {
+		this.expiresAt = expiresAt;
+	}
+
+	/**
 	 * @return the fileName
 	 */
 	public String getFileName() {
@@ -104,14 +121,14 @@ public class File implements Serializable {
 	/**
 	 * @return the purpose
 	 */
-	public String getPurpose() {
+	public FilePurpose getPurpose() {
 		return purpose;
 	}
 
 	/**
 	 * @param purpose the purpose to set
 	 */
-	public void setPurpose(String purpose) {
+	public void setPurpose(FilePurpose purpose) {
 		this.purpose = purpose;
 	}
 }

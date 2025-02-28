@@ -1,11 +1,12 @@
 /**
  * 
  */
-package za.co.sindi.ai.openai.models;
+package za.co.sindi.ai.openai.fine_tuning;
 
 import java.io.Serializable;
 
 import jakarta.json.bind.annotation.JsonbProperty;
+import za.co.sindi.ai.openai.models.FineTuningHyperParameters;
 
 /**
  * @author Buhake Sindi

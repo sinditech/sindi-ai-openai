@@ -25,6 +25,9 @@ public class UsageStatistics implements Serializable {
 	
 	@JsonbProperty("completion_tokens_details")
 	private CompletionTokensDetails completionTokensDetails;
+	
+	@JsonbProperty("prompt_tokens_details")
+	private PromptTokensDetails promptTokensDetails;
 
 	/**
 	 * @return the completionTokens
@@ -66,5 +69,33 @@ public class UsageStatistics implements Serializable {
 	 */
 	public void setTotalTokens(Integer totalTokens) {
 		this.totalTokens = totalTokens;
+	}
+
+	/**
+	 * @return the completionTokensDetails
+	 */
+	public CompletionTokensDetails getCompletionTokensDetails() {
+		return completionTokensDetails;
+	}
+
+	/**
+	 * @param completionTokensDetails the completionTokensDetails to set
+	 */
+	public void setCompletionTokensDetails(CompletionTokensDetails completionTokensDetails) {
+		this.completionTokensDetails = completionTokensDetails;
+	}
+
+	/**
+	 * @return the promptTokensDetails
+	 */
+	public PromptTokensDetails getPromptTokensDetails() {
+		return promptTokensDetails;
+	}
+
+	/**
+	 * @param promptTokensDetails the promptTokensDetails to set
+	 */
+	public void setPromptTokensDetails(PromptTokensDetails promptTokensDetails) {
+		this.promptTokensDetails = promptTokensDetails;
 	}
 }
