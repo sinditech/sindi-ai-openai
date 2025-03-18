@@ -19,6 +19,15 @@ public class JsonSchemaResponseFormat extends ResponseFormat {
 	@JsonbProperty
 	private JsonSchema schema;
 	
+	@JsonbProperty
+	private String description;
+	
+	@JsonbProperty
+	private String name;
+	
+	@JsonbProperty
+	private Boolean strict;
+	
 	/**
 	 * 
 	 */
@@ -47,5 +56,47 @@ public class JsonSchemaResponseFormat extends ResponseFormat {
 	 */
 	public void setSchema(JsonSchema schema) {
 		this.schema = schema;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the strict
+	 */
+	public Boolean getStrict() {
+		return strict;
+	}
+
+	/**
+	 * @param strict the strict to set
+	 */
+	public void setStrict(Boolean strict) {
+		this.strict = strict;
 	}
 }

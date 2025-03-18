@@ -15,13 +15,13 @@ import jakarta.json.bind.annotation.JsonbProperty;
 public class ChatChoiceChunk implements Serializable {
 	
 	@JsonbProperty
-	private ChatResponseMessage delta;
+	private ChatCompletionDelta delta;
 	
 	@JsonbProperty("logprobs")
 	private LogProbability logProbs;
 	
 	@JsonbProperty("finish_reason")
-	private String finishReason;
+	private FinishReason finishReason;
 	
 	@JsonbProperty
 	private Integer index;
@@ -40,7 +40,7 @@ public class ChatChoiceChunk implements Serializable {
 	 * @param finishReason
 	 * @param index
 	 */
-	public ChatChoiceChunk(ChatResponseMessage delta, LogProbability logProbs, String finishReason, Integer index) {
+	public ChatChoiceChunk(ChatCompletionDelta delta, LogProbability logProbs, FinishReason finishReason, Integer index) {
 		super();
 		this.delta = delta;
 		this.logProbs = logProbs;
@@ -51,14 +51,14 @@ public class ChatChoiceChunk implements Serializable {
 	/**
 	 * @return the delta
 	 */
-	public ChatResponseMessage getDelta() {
+	public ChatCompletionDelta getDelta() {
 		return delta;
 	}
 
 	/**
 	 * @param delta the delta to set
 	 */
-	public void setDelta(ChatResponseMessage delta) {
+	public void setDelta(ChatCompletionDelta delta) {
 		this.delta = delta;
 	}
 
@@ -79,14 +79,14 @@ public class ChatChoiceChunk implements Serializable {
 	/**
 	 * @return the finishReason
 	 */
-	public String getFinishReason() {
+	public FinishReason getFinishReason() {
 		return finishReason;
 	}
 
 	/**
 	 * @param finishReason the finishReason to set
 	 */
-	public void setFinishReason(String finishReason) {
+	public void setFinishReason(FinishReason finishReason) {
 		this.finishReason = finishReason;
 	}
 

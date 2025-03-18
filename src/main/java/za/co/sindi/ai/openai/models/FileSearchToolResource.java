@@ -14,6 +14,9 @@ public class FileSearchToolResource extends ToolResource {
 	
 	@JsonbProperty("vector_store_ids")
 	private String[] vectorStoreIds;
+	
+	@JsonbProperty("vector_stores")
+	private FileSearchVectorStore[] vectorStores;
 
 	/**
 	 * @return the vectorStoreIds
@@ -27,5 +30,19 @@ public class FileSearchToolResource extends ToolResource {
 	 */
 	public void setVectorStoreIds(String[] vectorStoreIds) {
 		this.vectorStoreIds = vectorStoreIds;
+	}
+
+	/**
+	 * @return the vectorStores
+	 */
+	public FileSearchVectorStore[] getVectorStores() {
+		return vectorStores;
+	}
+
+	/**
+	 * @param vectorStores the vectorStores to set
+	 */
+	public void setVectorStores(FileSearchVectorStore[] vectorStores) {
+		this.vectorStores = vectorStores;
 	}
 }

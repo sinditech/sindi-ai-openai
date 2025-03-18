@@ -25,6 +25,16 @@ public class ChatCompletionMessage implements Serializable {
 	@JsonbProperty
 	private String refusal;
 	
+	@JsonbProperty
+	private Annotation[] annotations;
+	
+	@JsonbProperty
+	private Audio audio;
+	
+	@JsonbProperty("function_calls")
+	@Deprecated
+	private Function[] functionCalls;
+	
 	@JsonbProperty("tool_calls")
 	private ToolCallFunction[] toolCalls;
 	
@@ -71,6 +81,48 @@ public class ChatCompletionMessage implements Serializable {
 	 */
 	public void setRefusal(String refusal) {
 		this.refusal = refusal;
+	}
+
+	/**
+	 * @return the annotations
+	 */
+	public Annotation[] getAnnotations() {
+		return annotations;
+	}
+
+	/**
+	 * @param annotations the annotations to set
+	 */
+	public void setAnnotations(Annotation[] annotations) {
+		this.annotations = annotations;
+	}
+
+	/**
+	 * @return the audio
+	 */
+	public Audio getAudio() {
+		return audio;
+	}
+
+	/**
+	 * @param audio the audio to set
+	 */
+	public void setAudio(Audio audio) {
+		this.audio = audio;
+	}
+
+	/**
+	 * @return the functionCalls
+	 */
+	public Function[] getFunctionCalls() {
+		return functionCalls;
+	}
+
+	/**
+	 * @param functionCalls the functionCalls to set
+	 */
+	public void setFunctionCalls(Function[] functionCalls) {
+		this.functionCalls = functionCalls;
 	}
 
 	/**

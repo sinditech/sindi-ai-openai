@@ -9,14 +9,14 @@ import java.util.Map;
 import java.util.Objects;
 
 import jakarta.json.bind.annotation.JsonbProperty;
-import za.co.sindi.ai.openai.models.Audio;
+import za.co.sindi.ai.openai.images.AssistantFunctionTool;
+import za.co.sindi.ai.openai.models.AudioParameters;
 import za.co.sindi.ai.openai.models.ChatRequestMessage;
-import za.co.sindi.ai.openai.models.FunctionTool;
+import za.co.sindi.ai.openai.models.ReasoningEffort;
 import za.co.sindi.ai.openai.models.ResponseFormat;
 import za.co.sindi.ai.openai.models.ServiceTier;
 import za.co.sindi.ai.openai.models.StaticContent;
 import za.co.sindi.ai.openai.models.StreamOptions;
-import za.co.sindi.ai.openai.models.ToolChoice;
 
 /**
  * Represents a chat completion response returned by model, based on the provided input.
@@ -37,7 +37,7 @@ public class ChatConversation implements Serializable {
 	private Boolean store;
 	
 	@JsonbProperty
-	private Map<String, Object> metadata;
+	private Map<String, String> metadata;
 	
 	@JsonbProperty("frequency_penalty")
 	private Double frequencyPenalty;
@@ -68,10 +68,13 @@ public class ChatConversation implements Serializable {
 	private StaticContent<?> prediction;
 	
 	@JsonbProperty
-	private Audio audio;
+	private AudioParameters audio;
 	
 	@JsonbProperty("presence_penalty")
 	private Double presencePenalty;
+	
+	@JsonbProperty("reasoning_effort")
+	private ReasoningEffort reasoningEffort;
 	
 	@JsonbProperty("response_format")
 	private ResponseFormat responseFormat;
@@ -98,7 +101,7 @@ public class ChatConversation implements Serializable {
 	private Integer topP;
 	
 	@JsonbProperty
-	private FunctionTool[] tools;
+	private AssistantFunctionTool[] tools;
 	
 	@JsonbProperty("tool_choice")
 	private Object toolChoice;
@@ -108,6 +111,9 @@ public class ChatConversation implements Serializable {
 	
 	@JsonbProperty
 	private String user;
+	
+	@JsonbProperty("web_search_options")
+	private WebSearchOptions webSearchOptions;
 
 	/**
 	 * @param messages
@@ -136,14 +142,14 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the metadata
 	 */
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
 	/**
 	 * @param metadata the metadata to set
 	 */
-	public void setMetadata(Map<String, Object> metadata) {
+	public void setMetadata(Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 
@@ -278,14 +284,14 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the audio
 	 */
-	public Audio getAudio() {
+	public AudioParameters getAudio() {
 		return audio;
 	}
 
 	/**
 	 * @param audio the audio to set
 	 */
-	public void setAudio(Audio audio) {
+	public void setAudio(AudioParameters audio) {
 		this.audio = audio;
 	}
 
@@ -301,6 +307,20 @@ public class ChatConversation implements Serializable {
 	 */
 	public void setPresencePenalty(Double presencePenalty) {
 		this.presencePenalty = presencePenalty;
+	}
+
+	/**
+	 * @return the reasoningEffort
+	 */
+	public ReasoningEffort getReasoningEffort() {
+		return reasoningEffort;
+	}
+
+	/**
+	 * @param reasoningEffort the reasoningEffort to set
+	 */
+	public void setReasoningEffort(ReasoningEffort reasoningEffort) {
+		this.reasoningEffort = reasoningEffort;
 	}
 
 	/**
@@ -418,14 +438,14 @@ public class ChatConversation implements Serializable {
 	/**
 	 * @return the tools
 	 */
-	public FunctionTool[] getTools() {
+	public AssistantFunctionTool[] getTools() {
 		return tools;
 	}
 
 	/**
 	 * @param tools the tools to set
 	 */
-	public void setTools(FunctionTool[] tools) {
+	public void setTools(AssistantFunctionTool[] tools) {
 		this.tools = tools;
 	}
 
@@ -490,5 +510,19 @@ public class ChatConversation implements Serializable {
 	 */
 	public String getModel() {
 		return model;
+	}
+
+	/**
+	 * @return the webSearchOptions
+	 */
+	public WebSearchOptions getWebSearchOptions() {
+		return webSearchOptions;
+	}
+
+	/**
+	 * @param webSearchOptions the webSearchOptions to set
+	 */
+	public void setWebSearchOptions(WebSearchOptions webSearchOptions) {
+		this.webSearchOptions = webSearchOptions;
 	}
 }

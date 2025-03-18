@@ -12,9 +12,6 @@ import java.io.Serializable;
  */
 public abstract class ChatMessage<T extends Serializable> implements Serializable {
 
-//	@JsonbProperty
-//	protected String role;
-	
 	/**
 	 * @return the content
 	 */
@@ -25,10 +22,4 @@ public abstract class ChatMessage<T extends Serializable> implements Serializabl
 	 */
 	public abstract void setContent(T content);
 
-//	/**
-//	 * @return the role
-//	 */
-//	public String getRole() {
-//		return role;
-//	}
 }

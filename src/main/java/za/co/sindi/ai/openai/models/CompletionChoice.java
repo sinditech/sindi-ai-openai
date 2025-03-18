@@ -15,7 +15,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 public class CompletionChoice implements Serializable {
 
 	@JsonbProperty("finish_reason")
-	private String finishReason;
+	private FinishReason finishReason;
 	
 	@JsonbProperty
 	private Integer index;
@@ -40,7 +40,7 @@ public class CompletionChoice implements Serializable {
 	 * @param text
 	 * @param logProbs
 	 */
-	public CompletionChoice(String finishReason, Integer index, String text, LogProbability logProbs) {
+	public CompletionChoice(FinishReason finishReason, Integer index, String text, LogProbability logProbs) {
 		super();
 		this.finishReason = finishReason;
 		this.index = index;
@@ -51,14 +51,14 @@ public class CompletionChoice implements Serializable {
 	/**
 	 * @return the finishReason
 	 */
-	public String getFinishReason() {
+	public FinishReason getFinishReason() {
 		return finishReason;
 	}
 
 	/**
 	 * @param finishReason the finishReason to set
 	 */
-	public void setFinishReason(String finishReason) {
+	public void setFinishReason(FinishReason finishReason) {
 		this.finishReason = finishReason;
 	}
 

@@ -22,19 +22,18 @@ public class ListAssistantRequest extends OpenAIRequest {
 	private String after;
 
 	/**
-	 * @param assistantId
+	 * 
 	 */
-	public ListAssistantRequest(final String assistantId) {
-		this(URI, assistantId);
+	public ListAssistantRequest() {
+		this(URI);
 		// TODO Auto-generated constructor stub
 	}
 	
 	/**
 	 * @param uri
-	 * @param assistantId
 	 */
-	public ListAssistantRequest(final String uri, final String assistantId) {
-		super("GET", uri + "/" + assistantId);
+	public ListAssistantRequest(final String uri) {
+		super("GET", uri);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -26,6 +26,11 @@ import za.co.sindi.ai.openai.audio.AudioSpeechRequest;
 import za.co.sindi.ai.openai.audio.AudioTranscriptionRequest;
 import za.co.sindi.ai.openai.audio.AudioTranslationRequest;
 import za.co.sindi.ai.openai.chat.ChatCompletionRequest;
+import za.co.sindi.ai.openai.chat.DeleteChatCompletionRequest;
+import za.co.sindi.ai.openai.chat.GetChatCompletionRequest;
+import za.co.sindi.ai.openai.chat.GetChatMessagesRequest;
+import za.co.sindi.ai.openai.chat.ListChatCompletionsRequest;
+import za.co.sindi.ai.openai.chat.UpdateCompletionRequest;
 import za.co.sindi.ai.openai.completions.CompletionRequest;
 import za.co.sindi.ai.openai.embeddings.CreateEmbeddingRequest;
 import za.co.sindi.ai.openai.files.DeleteFileRequest;
@@ -48,6 +53,8 @@ import za.co.sindi.ai.openai.models.Assistant;
 import za.co.sindi.ai.openai.models.AssistantList;
 import za.co.sindi.ai.openai.models.ChatCompletion;
 import za.co.sindi.ai.openai.models.ChatCompletionChunk;
+import za.co.sindi.ai.openai.models.ChatCompletionList;
+import za.co.sindi.ai.openai.models.ChatCompletionMessageList;
 import za.co.sindi.ai.openai.models.Completion;
 import za.co.sindi.ai.openai.models.DeletionStatus;
 import za.co.sindi.ai.openai.models.EmbeddingList;
@@ -58,10 +65,23 @@ import za.co.sindi.ai.openai.models.FineTuningJob;
 import za.co.sindi.ai.openai.models.FineTuningJobList;
 import za.co.sindi.ai.openai.models.Image;
 import za.co.sindi.ai.openai.models.ImageList;
+import za.co.sindi.ai.openai.models.InputItemList;
 import za.co.sindi.ai.openai.models.Model;
 import za.co.sindi.ai.openai.models.ModelList;
 import za.co.sindi.ai.openai.models.Moderation;
+import za.co.sindi.ai.openai.models.Response;
+import za.co.sindi.ai.openai.models.VectorStore;
+import za.co.sindi.ai.openai.models.VectorStoreList;
 import za.co.sindi.ai.openai.moderations.CreateModerationRequest;
+import za.co.sindi.ai.openai.response.CreateModelResponseRequest;
+import za.co.sindi.ai.openai.response.DeleteModelResponseRequest;
+import za.co.sindi.ai.openai.response.GetModelResponseRequest;
+import za.co.sindi.ai.openai.response.ListInputItemsRequest;
+import za.co.sindi.ai.openai.vector_store.CreateVectorStoreRequest;
+import za.co.sindi.ai.openai.vector_store.DeleteVectorStoreRequest;
+import za.co.sindi.ai.openai.vector_store.ListVectorStoreRequest;
+import za.co.sindi.ai.openai.vector_store.ModifyVectorStoreRequest;
+import za.co.sindi.ai.openai.vector_store.RetrieveVectorStoreRequest;
 import za.co.sindi.commons.net.sse.AllEventsEventHandler;
 import za.co.sindi.commons.net.sse.SSEEventSubscriber;
 import za.co.sindi.commons.util.Either;
@@ -184,6 +204,106 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 			validateAndHandleHttpResponse(httpResponse, transformer);
 			return handleStream(sseEventHandler.getEventStream(), transformer, ChatCompletionChunk.class); 
 		}).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.chat.GetChatCompletionRequest)
+	 */
+	@Override
+	public ChatCompletion send(GetChatCompletionRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<InputStream, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.chat.GetChatCompletionRequest)
+	 */
+	@Override
+	public CompletableFuture<ChatCompletion> sendAsync(GetChatCompletionRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.chat.GetChatMessagesRequest)
+	 */
+	@Override
+	public ChatCompletionMessageList send(GetChatMessagesRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<InputStream, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionMessageList.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.chat.GetChatMessagesRequest)
+	 */
+	@Override
+	public CompletableFuture<ChatCompletionMessageList> sendAsync(GetChatMessagesRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionMessageList.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.chat.ListChatCompletionsRequest)
+	 */
+	@Override
+	public ChatCompletionList send(ListChatCompletionsRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<InputStream, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionList.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.chat.ListChatCompletionsRequest)
+	 */
+	@Override
+	public CompletableFuture<ChatCompletionList> sendAsync(ListChatCompletionsRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionList.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.chat.UpdateCompletionRequest)
+	 */
+	@Override
+	public ChatCompletion send(UpdateCompletionRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<InputStream, String>> httpResponse = send(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getMetadata()))), BodyHandlers.ofInputStream());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.chat.UpdateCompletionRequest)
+	 */
+	@Override
+	public CompletableFuture<ChatCompletion> sendAsync(UpdateCompletionRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getMetadata()))), BodyHandlers.ofInputStream());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.chat.DeleteChatCompletionRequest)
+	 */
+	@Override
+	public DeletionStatus send(DeleteChatCompletionRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.chat.DeleteChatCompletionRequest)
+	 */
+	@Override
+	public CompletableFuture<DeletionStatus> sendAsync(DeleteChatCompletionRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
 	}
 
 	@Override
@@ -541,6 +661,186 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteAssistantRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+	}
+	
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.VectorStores.CreateVectorStoreRequest)
+	 */
+	@Override
+	public VectorStore send(CreateVectorStoreRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.VectorStores.CreateVectorStoreRequest)
+	 */
+	@Override
+	public CompletableFuture<VectorStore> sendAsync(CreateVectorStoreRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.VectorStores.ListVectorStoreRequest)
+	 */
+	@Override
+	public VectorStoreList send(ListVectorStoreRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStoreList.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.VectorStores.ListVectorStoreRequest)
+	 */
+	@Override
+	public CompletableFuture<VectorStoreList> sendAsync(ListVectorStoreRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStoreList.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.VectorStores.RetrieveVectorStoreRequest)
+	 */
+	@Override
+	public VectorStore send(RetrieveVectorStoreRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.VectorStores.RetrieveVectorStoreRequest)
+	 */
+	@Override
+	public CompletableFuture<VectorStore> sendAsync(RetrieveVectorStoreRequest request) throws IOException {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.VectorStores.ModifyVectorStoreRequest)
+	 */
+	@Override
+	public VectorStore send(ModifyVectorStoreRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.VectorStores.ModifyVectorStoreRequest)
+	 */
+	@Override
+	public CompletableFuture<VectorStore> sendAsync(ModifyVectorStoreRequest request) throws IOException {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.VectorStores.DeleteVectorStoreRequest)
+	 */
+	@Override
+	public DeletionStatus send(DeleteVectorStoreRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.VectorStores.DeleteVectorStoreRequest)
+	 */
+	@Override
+	public CompletableFuture<DeletionStatus> sendAsync(DeleteVectorStoreRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+	}
+	
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.response.CreateModelResponseRequest)
+	 */
+	@Override
+	public Response send(CreateModelResponseRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.response.CreateModelResponseRequest)
+	 */
+	@Override
+	public CompletableFuture<Response> sendAsync(CreateModelResponseRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.response.ListInputItemsRequest)
+	 */
+	@Override
+	public InputItemList send(ListInputItemsRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), InputItemList.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.response.ListInputItemsRequest)
+	 */
+	@Override
+	public CompletableFuture<InputItemList> sendAsync(ListInputItemsRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), InputItemList.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.response.GetModelResponseRequest)
+	 */
+	@Override
+	public Response send(GetModelResponseRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.response.GetModelResponseRequest)
+	 */
+	@Override
+	public CompletableFuture<Response> sendAsync(GetModelResponseRequest request) throws IOException {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class)).toCompletableFuture();
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#send(za.co.sindi.ai.openai.response.DeleteModelResponseRequest)
+	 */
+	@Override
+	public DeletionStatus send(DeleteModelResponseRequest request) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		HttpResponse<Either<String, String>> httpResponse = send(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
+		return transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see za.co.sindi.ai.openai.OpenAIClient#sendAsync(za.co.sindi.ai.openai.response.DeleteModelResponseRequest)
+	 */
+	@Override
+	public CompletableFuture<DeletionStatus> sendAsync(DeleteModelResponseRequest request) {
+		// TODO Auto-generated method stub
+		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
 		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
 	}
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package za.co.sindi.ai.openai.models;
 
 import java.io.Serializable;
@@ -9,38 +6,76 @@ import jakarta.json.bind.annotation.JsonbProperty;
 
 /**
  * @author Buhake Sindi
- * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/api-reference/audio">OpenAPI API reference documentation.</a>
+ * @since 15 March 2025
+ * @see <a href="https://platform.openai.com/docs/api-reference/chat/message-list">Chat Completion Message List reference documentation.</a>
  */
 public class Audio implements Serializable {
 
 	@JsonbProperty
-	private AudioVoice voice;
+	private String data;
+	
+	@JsonbProperty("expires_at")
+	private Integer expiresAt;
 	
 	@JsonbProperty
-	private AudioFormat format;
+	private String id;
+	
+	@JsonbProperty
+	private String transcript;
 
 	/**
-	 * @param voice
-	 * @param format
+	 * @return the data
 	 */
-	public Audio(AudioVoice voice, AudioFormat format) {
-		super();
-		this.voice = voice;
-		this.format = format;
+	public String getData() {
+		return data;
 	}
 
 	/**
-	 * @return the voice
+	 * @param data the data to set
 	 */
-	public AudioVoice getVoice() {
-		return voice;
+	public void setData(String data) {
+		this.data = data;
 	}
 
 	/**
-	 * @return the format
+	 * @return the expiresAt
 	 */
-	public AudioFormat getFormat() {
-		return format;
+	public Integer getExpiresAt() {
+		return expiresAt;
+	}
+
+	/**
+	 * @param expiresAt the expiresAt to set
+	 */
+	public void setExpiresAt(Integer expiresAt) {
+		this.expiresAt = expiresAt;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the transcript
+	 */
+	public String getTranscript() {
+		return transcript;
+	}
+
+	/**
+	 * @param transcript the transcript to set
+	 */
+	public void setTranscript(String transcript) {
+		this.transcript = transcript;
 	}
 }

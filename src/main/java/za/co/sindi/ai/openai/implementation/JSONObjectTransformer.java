@@ -34,7 +34,15 @@ public class JSONObjectTransformer implements ObjectTransformer {
 							new JsonbGPTModelFormatAdapter(),
 							new JsonbImageDetailAdapter(),
 							new JsonbServiceTierAdapter(),
-							new JsonbSortOrderAdapter());
+							new JsonbSortOrderAdapter(),
+							new JsonbReasoningEffortAdapter(),
+							new JsonbModelIncludeAdapter(), 
+							new JsonbTruncationStrategyAdapter(),
+							new JsonbFinishReasonAdapter(),
+							new JsonbStatusAdapter(),
+							new JsonbRoleAdapter(),
+							new JsonbMouseButtonAdapter(),
+							new JsonbReasoningSummaryAdapter());
 		return config;
 	}
 

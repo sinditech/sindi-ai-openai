@@ -48,7 +48,7 @@ public class VectorStore implements Serializable {
 	private long lastActiveAt;
 	
 	@JsonbProperty
-	private Map<String, Object> metadata;
+	private Map<String, String> metadata;
 
 	/**
 	 * @return the id
@@ -193,14 +193,14 @@ public class VectorStore implements Serializable {
 	/**
 	 * @return the metadata
 	 */
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
 	/**
 	 * @param metadata the metadata to set
 	 */
-	public void setMetadata(Map<String, Object> metadata) {
+	public void setMetadata(Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 }

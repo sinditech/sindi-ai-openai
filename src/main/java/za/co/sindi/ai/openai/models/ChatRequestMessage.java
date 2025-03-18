@@ -16,6 +16,7 @@ import jakarta.json.bind.annotation.JsonbTypeInfo;
 @JsonbTypeInfo(
 	key = "role",
 	value = {
+		@JsonbSubtype(alias="developer", type=ChatRequestDeveloperMessage.class),
 	    @JsonbSubtype(alias="system", type=ChatRequestSystemMessage.class),
 	    @JsonbSubtype(alias="user", type=ChatRequestUserStringMessage.class),
 	    @JsonbSubtype(alias="user", type=ChatRequestUserContentsMessage.class),
@@ -26,12 +27,4 @@ import jakarta.json.bind.annotation.JsonbTypeInfo;
 )
 public abstract class ChatRequestMessage<T extends Serializable> extends ChatMessage<T> {
 
-//	/**
-//	 * 
-//	 */
-//	protected ChatRequestMessage(final String role) {
-//		super();
-//		// TODO Auto-generated constructor stub
-//		super.role = Objects.requireNonNull(role);
-//	}
 }

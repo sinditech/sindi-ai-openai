@@ -17,7 +17,16 @@ public class AssistantList implements Serializable {
 	private String object;
 	
 	@JsonbProperty
-	private Model[] data;
+	private Assistant[] data;
+	
+	@JsonbProperty("first_id")
+	private String firstId;
+	
+	@JsonbProperty("last_id")
+	private String lastId;
+	
+	@JsonbProperty("has_more")
+	private Boolean hasMore;
 
 	/**
 	 * @return the object
@@ -36,14 +45,56 @@ public class AssistantList implements Serializable {
 	/**
 	 * @return the data
 	 */
-	public Model[] getData() {
+	public Assistant[] getData() {
 		return data;
 	}
 
 	/**
 	 * @param data the data to set
 	 */
-	public void setData(Model[] data) {
+	public void setData(Assistant[] data) {
 		this.data = data;
+	}
+
+	/**
+	 * @return the firstId
+	 */
+	public String getFirstId() {
+		return firstId;
+	}
+
+	/**
+	 * @param firstId the firstId to set
+	 */
+	public void setFirstId(String firstId) {
+		this.firstId = firstId;
+	}
+
+	/**
+	 * @return the lastId
+	 */
+	public String getLastId() {
+		return lastId;
+	}
+
+	/**
+	 * @param lastId the lastId to set
+	 */
+	public void setLastId(String lastId) {
+		this.lastId = lastId;
+	}
+
+	/**
+	 * @return the hasMore
+	 */
+	public Boolean getHasMore() {
+		return hasMore;
+	}
+
+	/**
+	 * @param hasMore the hasMore to set
+	 */
+	public void setHasMore(Boolean hasMore) {
+		this.hasMore = hasMore;
 	}
 }

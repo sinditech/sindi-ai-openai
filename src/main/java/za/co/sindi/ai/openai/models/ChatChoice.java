@@ -15,13 +15,13 @@ import jakarta.json.bind.annotation.JsonbProperty;
 public class ChatChoice implements Serializable {
 
 	@JsonbProperty("finish_reason")
-	private String finishReason;
+	private FinishReason finishReason;
 	
 	@JsonbProperty
 	private Integer index;
 	
 	@JsonbProperty
-	private ChatResponseMessage message;
+	private ChatCompletionMessage message;
 	
 	@JsonbProperty("logprobs")
 	private LogProbability logProbs;
@@ -40,7 +40,7 @@ public class ChatChoice implements Serializable {
 	 * @param message
 	 * @param logProbs
 	 */
-	public ChatChoice(String finishReason, Integer index, ChatResponseMessage message, LogProbability logProbs) {
+	public ChatChoice(FinishReason finishReason, Integer index, ChatCompletionMessage message, LogProbability logProbs) {
 		super();
 		this.finishReason = finishReason;
 		this.index = index;
@@ -51,14 +51,14 @@ public class ChatChoice implements Serializable {
 	/**
 	 * @return the finishReason
 	 */
-	public String getFinishReason() {
+	public FinishReason getFinishReason() {
 		return finishReason;
 	}
 
 	/**
 	 * @param finishReason the finishReason to set
 	 */
-	public void setFinishReason(String finishReason) {
+	public void setFinishReason(FinishReason finishReason) {
 		this.finishReason = finishReason;
 	}
 
@@ -79,14 +79,14 @@ public class ChatChoice implements Serializable {
 	/**
 	 * @return the message
 	 */
-	public ChatResponseMessage getMessage() {
+	public ChatCompletionMessage getMessage() {
 		return message;
 	}
 
 	/**
 	 * @param message the message to set
 	 */
-	public void setMessage(ChatResponseMessage message) {
+	public void setMessage(ChatCompletionMessage message) {
 		this.message = message;
 	}
 

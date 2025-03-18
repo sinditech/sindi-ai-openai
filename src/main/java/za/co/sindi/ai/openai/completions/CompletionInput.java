@@ -68,7 +68,7 @@ public abstract class CompletionInput<T extends Serializable> implements Seriali
 	private Double temperature;
 	
 	@JsonbProperty("top_p")
-	private Integer topP;
+	private Double topP;
 	
 	@JsonbProperty
 	private String user;
@@ -252,14 +252,14 @@ public abstract class CompletionInput<T extends Serializable> implements Seriali
 	/**
 	 * @return the topP
 	 */
-	public Integer getTopP() {
+	public Double getTopP() {
 		return topP;
 	}
 
 	/**
 	 * @param topP the topP to set
 	 */
-	public void setTopP(Integer topP) {
+	public void setTopP(Double topP) {
 		this.topP = topP;
 	}
 

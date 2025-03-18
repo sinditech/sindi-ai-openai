@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import jakarta.json.bind.annotation.JsonbProperty;
+import za.co.sindi.ai.openai.images.AssistantTool;
 
 /**
  * Represents a chat completion response returned by model, based on the provided input.
@@ -39,13 +40,13 @@ public class Assistant implements Serializable {
 	private String instructions;
 	
 	@JsonbProperty
-	private Tool[] tools;
+	private AssistantTool[] tools;
 	
 	@JsonbProperty("tool_resources")
-	private ToolResource[] toolResourcs;
+	private ToolResource[] toolResources;
 	
 	@JsonbProperty
-	private Map<String, Object> metadata;
+	private Map<String, String> metadata;
 	
 	@JsonbProperty
 	private Double temperature;
@@ -157,42 +158,42 @@ public class Assistant implements Serializable {
 	/**
 	 * @return the tools
 	 */
-	public Tool[] getTools() {
+	public AssistantTool[] getTools() {
 		return tools;
 	}
 
 	/**
 	 * @param tools the tools to set
 	 */
-	public void setTools(Tool[] tools) {
+	public void setTools(AssistantTool[] tools) {
 		this.tools = tools;
 	}
 
 	/**
-	 * @return the toolResourcs
+	 * @return the toolResources
 	 */
-	public ToolResource[] getToolResourcs() {
-		return toolResourcs;
+	public ToolResource[] getToolResources() {
+		return toolResources;
 	}
 
 	/**
-	 * @param toolResourcs the toolResourcs to set
+	 * @param toolResources the toolResources to set
 	 */
-	public void setToolResourcs(ToolResource[] toolResourcs) {
-		this.toolResourcs = toolResourcs;
+	public void setToolResources(ToolResource[] toolResources) {
+		this.toolResources = toolResources;
 	}
 
 	/**
 	 * @return the metadata
 	 */
-	public Map<String, Object> getMetadata() {
+	public Map<String, String> getMetadata() {
 		return metadata;
 	}
 
 	/**
 	 * @param metadata the metadata to set
 	 */
-	public void setMetadata(Map<String, Object> metadata) {
+	public void setMetadata(Map<String, String> metadata) {
 		this.metadata = metadata;
 	}
 

@@ -19,7 +19,7 @@ public class ToolCall implements Serializable {
 	private String id;
 	
 	@JsonbProperty
-	private String type;
+	private String type = "function";
 	
 	@JsonbProperty
 	private ToolCallFunction function;

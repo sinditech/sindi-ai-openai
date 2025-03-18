@@ -15,7 +15,7 @@ public class FileSearch implements Serializable {
 	private Integer maxNumberOfResults;
 	
 	@JsonbProperty("ranking_options")
-	private RankingOption rankingOption;
+	private RankingOptions rankingOption;
 
 	/**
 	 * @return the maxNumberOfResults
@@ -34,14 +34,14 @@ public class FileSearch implements Serializable {
 	/**
 	 * @return the rankingOption
 	 */
-	public RankingOption getRankingOption() {
+	public RankingOptions getRankingOption() {
 		return rankingOption;
 	}
 
 	/**
 	 * @param rankingOption the rankingOption to set
 	 */
-	public void setRankingOption(RankingOption rankingOption) {
+	public void setRankingOption(RankingOptions rankingOption) {
 		this.rankingOption = rankingOption;
 	}
 }

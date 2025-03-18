@@ -37,6 +37,9 @@ public class ChatCompletionChunk implements Serializable {
 	
 	@JsonbProperty
 	private String object;
+	
+	@JsonbProperty
+	private UsageStatistics usage;
 
 	/**
 	 * 
@@ -147,5 +150,33 @@ public class ChatCompletionChunk implements Serializable {
 	 */
 	public void setObject(String object) {
 		this.object = object;
+	}
+
+	/**
+	 * @return the serviceTier
+	 */
+	public String getServiceTier() {
+		return serviceTier;
+	}
+
+	/**
+	 * @param serviceTier the serviceTier to set
+	 */
+	public void setServiceTier(String serviceTier) {
+		this.serviceTier = serviceTier;
+	}
+
+	/**
+	 * @return the usage
+	 */
+	public UsageStatistics getUsage() {
+		return usage;
+	}
+
+	/**
+	 * @param usage the usage to set
+	 */
+	public void setUsage(UsageStatistics usage) {
+		this.usage = usage;
 	}
 }

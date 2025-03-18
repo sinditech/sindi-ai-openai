@@ -7,7 +7,9 @@ import java.io.Serializable;
 import java.util.Map;
 
 import jakarta.json.bind.annotation.JsonbProperty;
-import za.co.sindi.ai.openai.models.Tool;
+import za.co.sindi.ai.openai.images.AssistantTool;
+import za.co.sindi.ai.openai.models.ReasoningEffort;
+import za.co.sindi.ai.openai.models.ResponseFormat;
 import za.co.sindi.ai.openai.models.ToolResource;
 
 /**
@@ -30,16 +32,25 @@ public class AssistantInput implements Serializable {
 	private String instructions;
 	
 	@JsonbProperty("reasoning_effort")
-	private String reasoningEffort;
+	private ReasoningEffort reasoningEffort;
+	
+	@JsonbProperty("response_format")
+	private ResponseFormat responseFormat;
 	
 	@JsonbProperty
-	private Tool[] tools;
+	private Double temperature;
+	
+	@JsonbProperty
+	private AssistantTool[] tools;
 	
 	@JsonbProperty
 	private ToolResource[] toolResources;
 	
 	@JsonbProperty
 	private Map<String, Object> metadata;
+	
+	@JsonbProperty("top_p")
+	private Double topP;
 
 	/**
 	 * @return the model
@@ -100,28 +111,56 @@ public class AssistantInput implements Serializable {
 	/**
 	 * @return the reasoningEffort
 	 */
-	public String getReasoningEffort() {
+	public ReasoningEffort getReasoningEffort() {
 		return reasoningEffort;
 	}
 
 	/**
 	 * @param reasoningEffort the reasoningEffort to set
 	 */
-	public void setReasoningEffort(String reasoningEffort) {
+	public void setReasoningEffort(ReasoningEffort reasoningEffort) {
 		this.reasoningEffort = reasoningEffort;
+	}
+
+	/**
+	 * @return the responseFormat
+	 */
+	public ResponseFormat getResponseFormat() {
+		return responseFormat;
+	}
+
+	/**
+	 * @param responseFormat the responseFormat to set
+	 */
+	public void setResponseFormat(ResponseFormat responseFormat) {
+		this.responseFormat = responseFormat;
+	}
+
+	/**
+	 * @return the temperature
+	 */
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	/**
+	 * @param temperature the temperature to set
+	 */
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
 	}
 
 	/**
 	 * @return the tools
 	 */
-	public Tool[] getTools() {
+	public AssistantTool[] getTools() {
 		return tools;
 	}
 
 	/**
 	 * @param tools the tools to set
 	 */
-	public void setTools(Tool[] tools) {
+	public void setTools(AssistantTool[] tools) {
 		this.tools = tools;
 	}
 
@@ -151,5 +190,19 @@ public class AssistantInput implements Serializable {
 	 */
 	public void setMetadata(Map<String, Object> metadata) {
 		this.metadata = metadata;
+	}
+
+	/**
+	 * @return the topP
+	 */
+	public Double getTopP() {
+		return topP;
+	}
+
+	/**
+	 * @param topP the topP to set
+	 */
+	public void setTopP(Double topP) {
+		this.topP = topP;
 	}
 }

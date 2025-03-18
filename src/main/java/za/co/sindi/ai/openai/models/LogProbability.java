@@ -15,7 +15,10 @@ import jakarta.json.bind.annotation.JsonbProperty;
 public class LogProbability implements Serializable {
 
 	@JsonbProperty
-	private ContentTokenProbability[] content;
+	private TokenLogProbability[] content;
+	
+	@JsonbProperty
+	private TokenLogProbability[] refusal;
 	
 	/**
 	 * 
@@ -28,7 +31,7 @@ public class LogProbability implements Serializable {
 	/**
 	 * @param content
 	 */
-	public LogProbability(ContentTokenProbability[] content) {
+	public LogProbability(TokenLogProbability[] content) {
 		super();
 		this.content = content;
 	}
@@ -36,14 +39,28 @@ public class LogProbability implements Serializable {
 	/**
 	 * @return the content
 	 */
-	public ContentTokenProbability[] getContent() {
+	public TokenLogProbability[] getContent() {
 		return content;
 	}
 
 	/**
 	 * @param content the content to set
 	 */
-	public void setContent(ContentTokenProbability[] content) {
+	public void setContent(TokenLogProbability[] content) {
 		this.content = content;
+	}
+
+	/**
+	 * @return the refusal
+	 */
+	public TokenLogProbability[] getRefusal() {
+		return refusal;
+	}
+
+	/**
+	 * @param refusal the refusal to set
+	 */
+	public void setRefusal(TokenLogProbability[] refusal) {
+		this.refusal = refusal;
 	}
 }
