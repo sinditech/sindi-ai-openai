@@ -12,7 +12,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
  * @since 23 January 2024
  * @see <a href="https://platform.openai.com/docs/api-reference/chat/object">OpenAI API reference documentation.</a>
  */
-public class ChatChoiceChunk implements Serializable {
+public class ChatCompletionChoice implements Serializable {
 	
 	@JsonbProperty
 	private ChatCompletionDelta delta;
@@ -29,7 +29,7 @@ public class ChatChoiceChunk implements Serializable {
 	/**
 	 * 
 	 */
-	public ChatChoiceChunk() {
+	public ChatCompletionChoice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,7 +40,7 @@ public class ChatChoiceChunk implements Serializable {
 	 * @param finishReason
 	 * @param index
 	 */
-	public ChatChoiceChunk(ChatCompletionDelta delta, LogProbability logProbs, FinishReason finishReason, Integer index) {
+	public ChatCompletionChoice(ChatCompletionDelta delta, LogProbability logProbs, FinishReason finishReason, Integer index) {
 		super();
 		this.delta = delta;
 		this.logProbs = logProbs;

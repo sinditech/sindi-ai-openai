@@ -19,6 +19,9 @@ public class ToolCall implements Serializable {
 	private String id;
 	
 	@JsonbProperty
+	private Integer index;
+	
+	@JsonbProperty
 	private String type = "function";
 	
 	@JsonbProperty
@@ -55,6 +58,20 @@ public class ToolCall implements Serializable {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the index
+	 */
+	public Integer getIndex() {
+		return index;
+	}
+
+	/**
+	 * @param index the index to set
+	 */
+	public void setIndex(Integer index) {
+		this.index = index;
 	}
 
 	/**

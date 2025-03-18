@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 import jakarta.json.bind.annotation.JsonbSubtype;
 import jakarta.json.bind.annotation.JsonbTypeInfo;
-import za.co.sindi.ai.openai.moderations.ResponseWebSearchPreviewTool;
 
 /**
  * @author Buhake Sindi
@@ -17,7 +16,7 @@ import za.co.sindi.ai.openai.moderations.ResponseWebSearchPreviewTool;
 @JsonbTypeInfo(
 	key = "type",
 	value = {
-	    @JsonbSubtype(alias="computer_use_preview", type=ComputerUsePreviewTool.class),
+	    @JsonbSubtype(alias="computer_use_preview", type=ResponseComputerUsePreviewTool.class),
 	    @JsonbSubtype(alias="file_search", type=ResponseFileSearchTool.class),
 	    @JsonbSubtype(alias="function", type=ResponseFunctionTool.class),
 	    @JsonbSubtype(alias="web_search_preview", type=ResponseWebSearchPreviewTool.class),

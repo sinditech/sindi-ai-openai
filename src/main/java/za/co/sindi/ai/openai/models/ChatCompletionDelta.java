@@ -3,6 +3,8 @@
  */
 package za.co.sindi.ai.openai.models;
 
+import java.io.Serializable;
+
 import jakarta.json.bind.annotation.JsonbProperty;
 
 /**
@@ -31,7 +33,7 @@ public class ChatCompletionDelta implements Serializable {
 	/**
 	 * 
 	 */
-	public ChatResponseMessage() {
+	public ChatCompletionDelta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,22 +42,52 @@ public class ChatCompletionDelta implements Serializable {
 	 * @param toolCalls
 	 * @param functionCalls
 	 */
-	public ChatResponseMessage(final String content, final ToolCall[] toolCalls) {
+	public ChatCompletionDelta(final String content, final ToolCall[] toolCalls) {
 		super();
 		this.content = content;
 		this.toolCalls = toolCalls;
 	}
 
-	@Override
+	/**
+	 * @return the content
+	 */
 	public String getContent() {
-		// TODO Auto-generated method stub
 		return content;
 	}
 
-	@Override
+	/**
+	 * @param content the content to set
+	 */
 	public void setContent(String content) {
-		// TODO Auto-generated method stub
 		this.content = content;
+	}
+
+	/**
+	 * @return the refusal
+	 */
+	public String getRefusal() {
+		return refusal;
+	}
+
+	/**
+	 * @param refusal the refusal to set
+	 */
+	public void setRefusal(String refusal) {
+		this.refusal = refusal;
+	}
+
+	/**
+	 * @return the role
+	 */
+	public String getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	/**

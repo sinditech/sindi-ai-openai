@@ -1,10 +1,9 @@
 /**
  * 
  */
-package za.co.sindi.ai.openai.moderations;
+package za.co.sindi.ai.openai.models;
 
 import jakarta.json.bind.annotation.JsonbProperty;
-import za.co.sindi.ai.openai.models.ResponseTool;
 
 /**
  * @author Buhake Sindi

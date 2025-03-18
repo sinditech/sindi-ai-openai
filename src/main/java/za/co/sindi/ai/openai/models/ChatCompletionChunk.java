@@ -21,7 +21,7 @@ public class ChatCompletionChunk implements Serializable {
 	private String id;
 	
 	@JsonbProperty
-	private List<ChatChoiceChunk> choices;
+	private List<ChatCompletionChoice> choices;
 
 	@JsonbProperty
 	private long created;
@@ -57,7 +57,7 @@ public class ChatCompletionChunk implements Serializable {
 	 * @param systemFingerprint
 	 * @param object
 	 */
-	public ChatCompletionChunk(String id, List<ChatChoiceChunk> choices, long created, String model,
+	public ChatCompletionChunk(String id, List<ChatCompletionChoice> choices, long created, String model,
 			String systemFingerprint, String object) {
 		super();
 		this.id = id;
@@ -85,14 +85,14 @@ public class ChatCompletionChunk implements Serializable {
 	/**
 	 * @return the choices
 	 */
-	public List<ChatChoiceChunk> getChoices() {
+	public List<ChatCompletionChoice> getChoices() {
 		return choices;
 	}
 
 	/**
 	 * @param choices the choices to set
 	 */
-	public void setChoices(List<ChatChoiceChunk> choices) {
+	public void setChoices(List<ChatCompletionChoice> choices) {
 		this.choices = choices;
 	}
 
