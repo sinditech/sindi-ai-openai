@@ -12,7 +12,7 @@ import za.co.sindi.ai.openai.models.Embeddings;
  */
 public class CreateEmbeddingRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/embeddings";
+	private static final String URI = "/embeddings";
 	
 	private EmbeddingInput<?> input;
 	

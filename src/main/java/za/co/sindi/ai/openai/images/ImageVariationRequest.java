@@ -16,7 +16,7 @@ import za.co.sindi.ai.openai.models.ImageSize;
  */
 public class ImageVariationRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/images/variations";
+	private static final String URI = "/images/variations";
 	
 	private Path image;
 	private ImageModel model;

@@ -12,7 +12,7 @@ import za.co.sindi.ai.openai.models.ImagePrompt;
  */
 public class ImageRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/images/generations";
+	private static final String URI = "/images/generations";
 	
 	private ImagePrompt prompt;
 	

@@ -11,7 +11,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class DeleteVectorStoreRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/vector_stores";
+	private static final String URI = "/vector_stores";
 	
 	/**
 	 * @param vectorStoreId

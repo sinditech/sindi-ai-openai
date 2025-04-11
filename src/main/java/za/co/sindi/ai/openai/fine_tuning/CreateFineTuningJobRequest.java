@@ -11,7 +11,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class CreateFineTuningJobRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/fine_tuning/jobs";
+	private static final String URI = "/fine_tuning/jobs";
 	
 	private FineTuningJobInput input;
 	

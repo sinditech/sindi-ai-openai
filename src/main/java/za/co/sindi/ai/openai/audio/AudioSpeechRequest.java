@@ -16,7 +16,7 @@ import za.co.sindi.ai.openai.models.TTSVoiceOption;
  */
 public class AudioSpeechRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/audio/speech";
+	private static final String URI = "/audio/speech";
 	
 	private AudioSpeech speech;
 	

@@ -11,7 +11,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class CompletionRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/completions";
+	private static final String URI = "/completions";
 	
 	private CompletionInput<?> input;
 	

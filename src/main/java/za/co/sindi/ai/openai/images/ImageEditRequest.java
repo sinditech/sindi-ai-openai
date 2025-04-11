@@ -17,7 +17,7 @@ import za.co.sindi.ai.openai.models.ImageSize;
  */
 public class ImageEditRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/images/edits";
+	private static final String URI = "/images/edits";
 	
 	private Path image;
 	private String prompt;

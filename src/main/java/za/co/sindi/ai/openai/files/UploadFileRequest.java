@@ -15,7 +15,7 @@ import za.co.sindi.ai.openai.models.FilePurpose;
  */
 public class UploadFileRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/files";
+	private static final String URI = "/files";
 	
 	private Path file;
 	

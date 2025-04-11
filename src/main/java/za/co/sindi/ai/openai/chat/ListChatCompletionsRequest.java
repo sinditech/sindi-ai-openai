@@ -17,7 +17,7 @@ import za.co.sindi.commons.utils.Strings;
  */
 public class ListChatCompletionsRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/chat/completions";
+	private static final String URI = "/chat/completions";
 	
 	private Integer limit;
 	private SortOrder order;
@@ -116,9 +116,9 @@ public class ListChatCompletionsRequest extends OpenAIRequest {
 	 * @see za.co.sindi.ai.openai.OpenAIRequest#getUri()
 	 */
 	@Override
-	public java.net.URI getUri() {
+	public String getUri() {
 		// TODO Auto-generated method stub
-		URIBuilder uriBuilder = new URIBuilder(super.getUri());
+		URIBuilder uriBuilder = new URIBuilder(java.net.URI.create(super.getUri()));
 		if (limit != null) {
 			uriBuilder.addQueryParameters("limit", String.valueOf(limit));
 		}
@@ -134,6 +134,6 @@ public class ListChatCompletionsRequest extends OpenAIRequest {
 		for (Entry<String, Object> entry : metadata.entrySet()) {
 			uriBuilder.addQueryParameters("metadata[" + entry.getKey() + "]", String.valueOf(entry.getValue()));
 		}
-		return uriBuilder.build();
+		return uriBuilder.toString();
 	}
 }

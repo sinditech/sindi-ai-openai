@@ -3,7 +3,6 @@
  */
 package za.co.sindi.ai.openai;
 
-import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -12,10 +11,8 @@ import java.util.Objects;
  */
 public abstract class OpenAIRequest {
 	
-	protected static final String HOST_API_PATH = "https://api.openai.com/v1"; //"http://zanino.millennium.berkeley.edu:8000/v1"; // For test "https://api.pawan.krd/v1"; //
-	
 	private final String method;
-	private final URI uri;
+	private final String uri;
 	private final String contentType;
 	
 	/**
@@ -34,7 +31,7 @@ public abstract class OpenAIRequest {
 	protected OpenAIRequest(String method, String uri, String contentType) {
 		super();
 		this.method = Objects.requireNonNull(method);
-		this.uri = URI.create(Objects.requireNonNull(uri));
+		this.uri = Objects.requireNonNull(uri);
 		this.contentType = contentType;
 	}
 
@@ -55,7 +52,7 @@ public abstract class OpenAIRequest {
 	/**
 	 * @return the uri
 	 */
-	public URI getUri() {
+	public String getUri() {
 		return uri;
 	}
 }

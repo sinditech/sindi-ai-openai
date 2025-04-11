@@ -14,7 +14,7 @@ import za.co.sindi.ai.openai.models.ChatRequestMessage;
  */
 public class ChatCompletionRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/chat/completions";
+	private static final String URI = "/chat/completions";
 	
 	private ChatConversation conversation;
 	

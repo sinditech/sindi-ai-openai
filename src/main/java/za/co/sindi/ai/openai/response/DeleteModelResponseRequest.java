@@ -12,7 +12,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class DeleteModelResponseRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/responses";
+	private static final String URI = "/responses";
 	
 	/**
 	 * @param responseId

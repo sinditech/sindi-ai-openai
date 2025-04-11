@@ -15,7 +15,7 @@ import za.co.sindi.commons.utils.URLEncoderUtils;
  */
 public class ListFileRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/files";
+	private static final String URI = "/files";
 	
 	private FilePurpose purpose;
 	
@@ -50,15 +50,15 @@ public class ListFileRequest extends OpenAIRequest {
 	}
 
 	@Override
-	public java.net.URI getUri() {
+	public String getUri() {
 		// TODO Auto-generated method stub
-		String uri = super.getUri().toString();
+		String uri = super.getUri();
 		StringBuilder sb = new StringBuilder();
 		
 		if (getPurpose() != null) {
 			sb.append("purpose=" + getPurpose());
 		}
 
-		return java.net.URI.create(uri + (sb.isEmpty() ? "" : "?"  + URLEncoderUtils.encodeQuery(sb.toString(), StandardCharsets.UTF_8)));
+		return uri + (sb.isEmpty() ? "" : "?"  + URLEncoderUtils.encodeQuery(sb.toString(), StandardCharsets.UTF_8));
 	}
 }

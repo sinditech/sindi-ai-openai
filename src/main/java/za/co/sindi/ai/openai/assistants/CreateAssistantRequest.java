@@ -11,7 +11,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class CreateAssistantRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/assistants";
+	private static final String URI = "/assistants";
 	
 	private AssistantInput input;
 	

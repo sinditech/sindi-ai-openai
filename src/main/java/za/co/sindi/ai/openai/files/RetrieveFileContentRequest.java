@@ -13,7 +13,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class RetrieveFileContentRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/files";
+	private static final String URI = "/files";
 	
 	/**
 	 * @param fileId

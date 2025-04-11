@@ -15,7 +15,7 @@ import za.co.sindi.ai.openai.models.AudioTranscriptResponseFormat;
  */
 public class AudioTranscriptionRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/audio/transcriptions";
+	private static final String URI = "/audio/transcriptions";
 	
 	private Path file;
 	

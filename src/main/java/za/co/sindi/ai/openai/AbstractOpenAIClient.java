@@ -5,6 +5,7 @@ package za.co.sindi.ai.openai;
 
 import java.io.IOException;
 import java.net.ProxySelector;
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublisher;
@@ -34,6 +35,9 @@ import za.co.sindi.commons.utils.Strings;
  */
 public abstract class AbstractOpenAIClient implements OpenAIClient {
 	
+	private static final String HOST_API_PATH = "https://api.openai.com/v1";
+	
+	private final String baseUrl;
 	private final String openAIKey;
 	private final String organizationId;
 	
@@ -46,7 +50,17 @@ public abstract class AbstractOpenAIClient implements OpenAIClient {
 	 * @param organizationId
 	 */
 	protected AbstractOpenAIClient(String openAIKey, String organizationId) {
+		this(HOST_API_PATH, openAIKey, organizationId);
+	}
+	
+	/**
+	 * @param baseUrl
+	 * @param openAIKey
+	 * @param organizationId
+	 */
+	protected AbstractOpenAIClient(String baseUrl, String openAIKey, String organizationId) {
 		super();
+		this.baseUrl = Objects.requireNonNull(baseUrl, "An OpenAI base URL is required.");
 		this.openAIKey = Objects.requireNonNull(openAIKey, "An OpenAI Key is required.");
 		this.organizationId = organizationId;
 	}
@@ -73,7 +87,7 @@ public abstract class AbstractOpenAIClient implements OpenAIClient {
 	}
 	
 	protected HttpRequest.Builder createHttpRequestBuilder(final OpenAIRequest request, final BodyPublisher bodyPublisher) {
-		HttpRequest.Builder httpRequestBuilder = HttpRequest.newBuilder(request.getUri())
+		HttpRequest.Builder httpRequestBuilder = HttpRequest.newBuilder(URI.create(baseUrl + request.getUri()))
 															.header("Authorization", "Bearer " + openAIKey)
 															.method(request.getMethod(), bodyPublisher == null ? BodyPublishers.noBody() : bodyPublisher);
 		

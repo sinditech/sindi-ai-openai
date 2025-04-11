@@ -12,7 +12,7 @@ import za.co.sindi.ai.openai.models.ModerationModelName;
  */
 public class CreateModerationRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/moderations";
+	private static final String URI = "/moderations";
 	
 	private ModerationInput<?> input;
 	

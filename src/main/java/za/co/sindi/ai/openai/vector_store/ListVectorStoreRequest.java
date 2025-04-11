@@ -14,7 +14,7 @@ import za.co.sindi.commons.utils.Strings;
  */
 public class ListVectorStoreRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/vector_stores";
+	private static final String URI = "/vector_stores";
 	
 	private Integer limit;
 	private SortOrder order;
@@ -98,9 +98,9 @@ public class ListVectorStoreRequest extends OpenAIRequest {
 	 */
 	
 	@Override
-	public java.net.URI getUri() {
+	public String getUri() {
 		// TODO Auto-generated method stub
-		URIBuilder uriBuilder = new URIBuilder(super.getUri());
+		URIBuilder uriBuilder = new URIBuilder(java.net.URI.create(super.getUri()));
 		if (limit != null) {
 			uriBuilder.addQueryParameters("limit", String.valueOf(limit));
 		}
@@ -113,6 +113,6 @@ public class ListVectorStoreRequest extends OpenAIRequest {
 		if (!Strings.isNullOrEmpty(before)) {
 			uriBuilder.addQueryParameters("before", before);
 		}
-		return uriBuilder.build();
+		return uriBuilder.toString();
 	}
 }

@@ -15,7 +15,7 @@ import za.co.sindi.commons.utils.URLEncoderUtils;
  */
 public class ListFineTuningJobRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/fine_tuning/jobs";
+	private static final String URI = "/fine_tuning/jobs";
 	
 	private String after;
 	
@@ -66,9 +66,9 @@ public class ListFineTuningJobRequest extends OpenAIRequest {
 	}
 
 	@Override
-	public java.net.URI getUri() {
+	public String getUri() {
 		// TODO Auto-generated method stub
-		String uri = super.getUri().toString();
+		String uri = super.getUri();
 		StringBuilder sb = new StringBuilder();
 		if (!Strings.isNullOrEmpty(getAfter())) {
 			sb.append("after=" + getAfter());
@@ -79,6 +79,6 @@ public class ListFineTuningJobRequest extends OpenAIRequest {
 			sb.append("limit=" + getLimit());
 		}
 
-		return java.net.URI.create(uri + (sb.isEmpty() ? "" : "?"  + URLEncoderUtils.encodeQuery(sb.toString(), StandardCharsets.UTF_8)));
+		return uri + (sb.isEmpty() ? "" : "?"  + URLEncoderUtils.encodeQuery(sb.toString(), StandardCharsets.UTF_8));
 	}
 }

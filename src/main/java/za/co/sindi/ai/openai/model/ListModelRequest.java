@@ -11,7 +11,7 @@ import za.co.sindi.ai.openai.OpenAIRequest;
  */
 public class ListModelRequest extends OpenAIRequest {
 
-	private static final String URI = HOST_API_PATH + "/models";
+	private static final String URI = "/models";
 
 	/**
 	 *
