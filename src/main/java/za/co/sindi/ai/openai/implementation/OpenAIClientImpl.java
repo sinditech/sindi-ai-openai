@@ -109,6 +109,16 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		super(openAPIKey, organizationId);
 	}
 
+	/**
+	 * @param baseUrl
+	 * @param openAIKey
+	 * @param organizationId
+	 */
+	public OpenAIClientImpl(String baseUrl, String openAIKey, String organizationId) {
+		super(baseUrl, openAIKey, organizationId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public Completion send(CompletionRequest request) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
