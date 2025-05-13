@@ -8,8 +8,9 @@ package za.co.sindi.ai.openai.models;
  * @since 23 January 2024
  * @see <a href="https://platform.openai.com/docs/models/overview">Model Overview</a>
  */
-public enum DALLEModelName {
-	DALL_E_3("dall-e-3")
+public enum ImageGenerationModelName {
+	GPT_IMAGE_1("gpt-image-1")
+	,DALL_E_3("dall-e-3")
 	,DALL_E_2("dall-e-2")
 	;
 	private final String model;
@@ -17,16 +18,16 @@ public enum DALLEModelName {
 	/**
 	 * @param model
 	 */
-	private DALLEModelName(String model) {
+	private ImageGenerationModelName(String model) {
 		this.model = model;
 	}
 	
-	public static DALLEModelName of(final String value) {
-		for (DALLEModelName model : values()) {
+	public static ImageGenerationModelName of(final String value) {
+		for (ImageGenerationModelName model : values()) {
 			if (model.model.equals(value)) return model;
 		}
 		
-		throw new IllegalArgumentException("Invalid DALL-E model '" + value + "'.");
+		throw new IllegalArgumentException("Invalid image generation model '" + value + "'.");
 	}
 
 	@Override

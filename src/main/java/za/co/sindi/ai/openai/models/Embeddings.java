@@ -6,7 +6,7 @@ package za.co.sindi.ai.openai.models;
 /**
  * @author Buhake Sindi
  * @since 23 January 2024
- * @see <a href="https://platform.openai.com/docs/models/tts">TTS Model</a>
+ * @see <a href="https://platform.openai.com/docs/models#embeddings">Embedding Model</a>
  */
 public enum Embeddings {
 	TEXT_EMBEDDING_3_LARGE("text-embedding-3-large")
@@ -20,6 +20,14 @@ public enum Embeddings {
 	 */
 	private Embeddings(String model) {
 		this.model = model;
+	}
+	
+	public static Embeddings of(final String value) {
+		for (Embeddings model : values()) {
+			if (model.model.equals(value)) return model;
+		}
+		
+		throw new IllegalArgumentException("Invalid Embedding model '" + value + "'.");
 	}
 
 	@Override

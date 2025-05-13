@@ -9,7 +9,8 @@ package za.co.sindi.ai.openai.models;
  * @see <a href="https://platform.openai.com/docs/models/tts">TTS Model</a>
  */
 public enum TTSModel {
-	TTS_1("tts-1")
+	GPT_4O_MINI_TTS("gpt-4o-mini-tts")
+	,TTS_1("tts-1")
 	,TTS_1_HD("tts-1-hd")
 	;
 	private final String model;
