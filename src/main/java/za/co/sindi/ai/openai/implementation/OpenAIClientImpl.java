@@ -130,7 +130,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Completion> sendAsync(CompletionRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Completion.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Completion.class));
 	}
 
 	@Override
@@ -144,7 +144,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Path> sendAsync(AudioSpeechRequest request, Path ofPath) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<Path, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getSpeech()))), BodyHandlers.ofFile(ofPath));
-		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer));
 	}
 
 	@Override
@@ -160,7 +160,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		// TODO Auto-generated method stub
 		String boundary = HttpFormDataUtils.createMultipartBoundaryID();
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, za.co.sindi.commons.net.http.BodyPublishers.ofMultipartFormData(HttpFormDataUtils.toMap(request), boundary)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer));
 	}
 
 	@Override
@@ -176,7 +176,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		// TODO Auto-generated method stub
 		String boundary = new BigInteger(256, ThreadLocalRandom.current()).toString();
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, za.co.sindi.commons.net.http.BodyPublishers.ofMultipartFormData(HttpFormDataUtils.toMap(request), boundary)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer));
 	}
 
 	@Override
@@ -190,7 +190,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<ChatCompletion> sendAsync(ChatCompletionRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getConversation()))), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class));
 	}
 
 	@Override
@@ -213,7 +213,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		return httpResponseFuture.thenApplyAsync(httpResponse -> { 
 			validateAndHandleHttpResponse(httpResponse, transformer);
 			return handleStream(sseEventHandler.getEventStream(), transformer, ChatCompletionChunk.class); 
-		}).toCompletableFuture();
+		});
 	}
 
 	/* (non-Javadoc)
@@ -233,7 +233,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<ChatCompletion> sendAsync(GetChatCompletionRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class));
 	}
 
 	/* (non-Javadoc)
@@ -253,7 +253,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<ChatCompletionMessageList> sendAsync(GetChatMessagesRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionMessageList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionMessageList.class));
 	}
 
 	/* (non-Javadoc)
@@ -273,7 +273,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<ChatCompletionList> sendAsync(ListChatCompletionsRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletionList.class));
 	}
 
 	/* (non-Javadoc)
@@ -293,7 +293,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<ChatCompletion> sendAsync(UpdateCompletionRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getMetadata()))), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ChatCompletion.class));
 	}
 
 	/* (non-Javadoc)
@@ -313,7 +313,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteChatCompletionRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class));
 	}
 
 	@Override
@@ -327,7 +327,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<EmbeddingList> sendAsync(CreateEmbeddingRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), EmbeddingList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), EmbeddingList.class));
 	}
 
 	@Override
@@ -341,7 +341,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<FineTuningJob> sendAsync(CreateFineTuningJobRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJob.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJob.class));
 	}
 
 	@Override
@@ -355,7 +355,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<FineTuningJobList> sendAsync(ListFineTuningJobRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJobList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJobList.class));
 	}
 
 	@Override
@@ -369,7 +369,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<FineTuningEventList> sendAsync(ListFineTuningEventRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningEventList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningEventList.class));
 	}
 
 	@Override
@@ -383,7 +383,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<FineTuningJob> sendAsync(RetrieveFineTuningJobRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJob.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJob.class));
 	}
 
 	@Override
@@ -397,7 +397,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<FineTuningJob> sendAsync(CancelFineTuningJobRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJob.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FineTuningJob.class));
 	}
 
 	@Override
@@ -413,7 +413,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		// TODO Auto-generated method stub
 		String boundary = HttpFormDataUtils.createMultipartBoundaryID();
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, za.co.sindi.commons.net.http.BodyPublishers.ofMultipartFormData(HttpFormDataUtils.toMap(request), boundary)), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), File.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), File.class));
 	}
 
 	@Override
@@ -427,7 +427,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<FileList> sendAsync(ListFileRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FileList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), FileList.class));
 	}
 
 	@Override
@@ -441,7 +441,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<File> sendAsync(RetrieveFileRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), File.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), File.class));
 	}
 
 	@Override
@@ -455,7 +455,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteFileRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class));
 	}
 
 	@Override
@@ -469,7 +469,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Path> sendAsync(RetrieveFileContentRequest request, Path ofPath) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<Path, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofFile(ofPath));
-		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> validateAndHandleHttpResponse(httpResponse, transformer));
 	}
 
 	@Override
@@ -483,7 +483,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Image> sendAsync(ImageRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getPrompt()))), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Image.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Image.class));
 	}
 
 	@Override
@@ -499,7 +499,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		// TODO Auto-generated method stub
 		String boundary = HttpFormDataUtils.createMultipartBoundaryID();
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, za.co.sindi.commons.net.http.BodyPublishers.ofMultipartFormData(HttpFormDataUtils.toMap(request), boundary)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ImageList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ImageList.class));
 	}
 
 	@Override
@@ -515,7 +515,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 		// TODO Auto-generated method stub
 		String boundary = HttpFormDataUtils.createMultipartBoundaryID();
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, za.co.sindi.commons.net.http.BodyPublishers.ofMultipartFormData(HttpFormDataUtils.toMap(request), boundary)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ImageList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ImageList.class));
 	}
 
 	@Override
@@ -529,7 +529,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<ModelList> sendAsync(ListModelRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ModelList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), ModelList.class));
 	}
 
 	@Override
@@ -543,7 +543,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Model> sendAsync(RetrieveModelRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Model.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Model.class));
 	}
 
 	@Override
@@ -557,7 +557,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteModelRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class));
 	}
 
 	@Override
@@ -571,7 +571,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Moderation> sendAsync(CreateModerationRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<InputStream, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofInputStream());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Moderation.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Moderation.class));
 	}
 
 	/* (non-Javadoc)
@@ -591,7 +591,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Assistant> sendAsync(CreateAssistantRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Assistant.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Assistant.class));
 	}
 
 	/* (non-Javadoc)
@@ -611,7 +611,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<AssistantList> sendAsync(ListAssistantRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), AssistantList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), AssistantList.class));
 	}
 
 	/* (non-Javadoc)
@@ -631,7 +631,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Assistant> sendAsync(RetrieveAssistantRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Assistant.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Assistant.class));
 	}
 
 	/* (non-Javadoc)
@@ -651,7 +651,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Assistant> sendAsync(ModifyAssistantRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Assistant.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Assistant.class));
 	}
 
 	/* (non-Javadoc)
@@ -671,7 +671,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteAssistantRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class));
 	}
 	
 	/* (non-Javadoc)
@@ -691,7 +691,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<VectorStore> sendAsync(CreateVectorStoreRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class));
 	}
 
 	/* (non-Javadoc)
@@ -711,7 +711,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<VectorStoreList> sendAsync(ListVectorStoreRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStoreList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStoreList.class));
 	}
 
 	/* (non-Javadoc)
@@ -731,7 +731,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<VectorStore> sendAsync(RetrieveVectorStoreRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class));
 	}
 
 	/* (non-Javadoc)
@@ -751,7 +751,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<VectorStore> sendAsync(ModifyVectorStoreRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput())))), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), VectorStore.class));
 	}
 
 	/* (non-Javadoc)
@@ -771,7 +771,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteVectorStoreRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(applyNewAssistant(createHttpRequestBuilder(request, null)), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class));
 	}
 	
 	/* (non-Javadoc)
@@ -791,7 +791,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Response> sendAsync(CreateModelResponseRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, BodyPublishers.ofString(transformer.transform(request.getInput()))), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class));
 	}
 
 	/* (non-Javadoc)
@@ -811,7 +811,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<InputItemList> sendAsync(ListInputItemsRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), InputItemList.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), InputItemList.class));
 	}
 
 	/* (non-Javadoc)
@@ -831,7 +831,7 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<Response> sendAsync(GetModelResponseRequest request) throws IOException {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), Response.class));
 	}
 
 	/* (non-Javadoc)
@@ -851,6 +851,6 @@ public class OpenAIClientImpl extends AbstractOpenAIClient {
 	public CompletableFuture<DeletionStatus> sendAsync(DeleteModelResponseRequest request) {
 		// TODO Auto-generated method stub
 		CompletableFuture<HttpResponse<Either<String, String>>> httpResponseFuture = sendAsync(createHttpRequestBuilder(request, null), BodyHandlers.ofString());
-		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class)).toCompletableFuture();
+		return httpResponseFuture.thenApplyAsync(httpResponse -> transformer.transform(validateAndHandleHttpResponse(httpResponse, transformer), DeletionStatus.class));
 	}
 }
